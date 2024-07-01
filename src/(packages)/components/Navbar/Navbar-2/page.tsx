@@ -23,7 +23,7 @@ import {
 
 const SecondNavbar  = () => {
     return (
-        <div className="flex gap-4 p-3 items-center justify-between">
+        <div className="flex gap-4 border-b border-gray-300 p-3 items-center justify-between">
           <div className="hidden md:flex items-center gap-4 mr-8">
           <h1 className="text-2xl hidden md:flex font-bold tracking-tight cursor-pointer pr-4">Logo</h1>
             <NavigationMenu>
