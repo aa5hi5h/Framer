@@ -6,11 +6,27 @@ import FirstFAQ from "@/(packages)/components/FAQ/FAQ-1/page"
 import SecondFAQ from "@/(packages)/components/FAQ/FAQ-2/page"
 import FirstFooter from "@/(packages)/components/Footer/Footer-1/page"
 import SecondFooter from "@/(packages)/components/Footer/Footer-2/page"
+import FirstHeader from "@/(packages)/components/Header/Header-1/page"
+import SecondHeader from "@/(packages)/components/Header/Header-2/page"
+import FirstHero from "@/(packages)/components/Hero/Hero-1/page"
+import SecondHero from "@/(packages)/components/Hero/Hero-2/page"
+import ThirdHero from "@/(packages)/components/Hero/Hero-3/page"
+import FourthHero from "@/(packages)/components/Hero/Hero-4/page"
+import FirstSignIn from "@/(packages)/components/Login/Login-1/page"
+import FirstLogin from "@/(packages)/components/Login/Login-1/page"
+import SecondSignIn from "@/(packages)/components/Login/Login-2/page"
+import ThirdSignIn from "@/(packages)/components/Login/Login-3/page"
+import FourthSignIn from "@/(packages)/components/Login/Login-4/page"
+import FirstLogo from "@/(packages)/components/Logo/Logo-1/page"
+import SecondLogo from "@/(packages)/components/Logo/Logo-2/page"
 import Navbar from "@/(packages)/components/Navbar/Navbar-1/page"
 import SecondNavbar from "@/(packages)/components/Navbar/Navbar-2/page"
 import FirstPricing from "@/(packages)/components/Pricing/Pricing-1/page"
 import SecondPricing from "@/(packages)/components/Pricing/Pricing-2/page"
 import ThirdPricing from "@/(packages)/components/Pricing/Pricing-3/page"
+import SecondSignUp from "@/(packages)/components/SignUp/SignUp-2/page"
+import ThirdSignUp from "@/(packages)/components/SignUp/SignUp-3/page"
+import FourthSignUp from "@/(packages)/components/SignUp/SignUp-4/page"
 import FirstTestimonial from "@/(packages)/components/Testimonials/Testimonials-1/page"
 import SecondTestimonial from "@/(packages)/components/Testimonials/Testimonials-2/page"
 import ThirdTestimonial from "@/(packages)/components/Testimonials/Testimonials-3/page"
@@ -18,7 +34,7 @@ import ThirdTestimonial from "@/(packages)/components/Testimonials/Testimonials-
 const page = () => {
     return (
         <div>
-            <SecondFAQ />
+            <SecondLogo />
         </div>
     )
 }
