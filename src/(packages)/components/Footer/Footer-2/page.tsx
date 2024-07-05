@@ -4,8 +4,9 @@ import { Input } from "@/components/ui/input"
 
 const SecondFooter = () => {
     return (
-        <div className="p-3 flex flex-col my-[2rem]">
-            <div className="flex flex-col md:flex-row space-y-8 md:space-y-0 justify-between items-start">
+        <div className="p-3 flex flex-col mb-[2rem]">
+            <hr className="w-full  mt-[3rem] h-[1px] border-gray-700 my-[3rem]" />
+            <div className="flex flex-col md:flex-row space-y-8 mb-[2rem] md:space-y-0 justify-between items-start">
              <h1 className="text-4xl font-bold tracking-tight cursor-pointer">Logo</h1>
              <div className="flex gap-12 items-center">
                 <div className="flex flex-col items-center space-y-4">
@@ -43,7 +44,6 @@ const SecondFooter = () => {
 
              </div>
              </div>
-             <hr className="w-full  mt-[3rem] h-[1px] border-gray-700" />
         </div>
     )
 }

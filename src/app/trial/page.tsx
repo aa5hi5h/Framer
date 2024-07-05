@@ -36,11 +36,18 @@ import FourthSignUp from "@/(packages)/components/SignUp/SignUp-4/page"
 import FirstTestimonial from "@/(packages)/components/Testimonials/Testimonials-1/page"
 import SecondTestimonial from "@/(packages)/components/Testimonials/Testimonials-2/page"
 import ThirdTestimonial from "@/(packages)/components/Testimonials/Testimonials-3/page"
+import EcommerceFeaturedPage from "@/(packages)/custom/Ecommerce/(pages)/featuredPage"
+import EcommerceLanding from "@/(packages)/custom/Ecommerce/(pages)/landing"
+import EcommerceProductDetail from "@/(packages)/custom/Ecommerce/(pages)/productDetail"
+import EcommerceSignInPage from "@/(packages)/custom/Ecommerce/(pages)/SignInPage"
+import EcommerceSignUpPage from "@/(packages)/custom/Ecommerce/(pages)/SignUpPage"
+import EcommerceStore from "@/(packages)/custom/Ecommerce/(pages)/store"
+import EcommerceStoreDetail from "@/(packages)/custom/Ecommerce/(pages)/StoreDetail"
 
 const page = () => {
     return (
         <div>
-            <SecondItemDetail />
+            <EcommerceSignUpPage />
         </div>
     )
 }
