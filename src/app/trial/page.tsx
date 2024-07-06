@@ -52,14 +52,21 @@ import LmsLanding from "@/(packages)/custom/Lms/(pages)/Landing"
 import LmsProductDetail from "@/(packages)/custom/Lms/(pages)/ProductDetail"
 import LmsSignIn from "@/(packages)/custom/Lms/(pages)/SignInPage"
 import LmsSignUp from "@/(packages)/custom/Lms/(pages)/SignUpPage"
+import RentalsDetailCard from "@/(packages)/custom/Rental/(pages)/DetailCard"
+import RentalLanding from "@/(packages)/custom/Rental/(pages)/Landing"
 import RenatalsSignUp from "@/(packages)/custom/Rental/(pages)/SignUp"
+import SaasLanding from "@/(packages)/custom/Saas/(pages)/Landing"
 import SaasSignIn from "@/(packages)/custom/Saas/(pages)/SignIn"
+import TwitterDetail from "@/(packages)/custom/Twiter/(pages)/Detail"
+import TwitterLanding from "@/(packages)/custom/Twiter/(pages)/Landing"
+import TwitterNotification from "@/(packages)/custom/Twiter/(pages)/Notification"
+import TwitterProfile from "@/(packages)/custom/Twiter/(pages)/Profile"
 import TwitterSignUp from "@/(packages)/custom/Twiter/(pages)/SignUp"
 
 const page = () => {
     return (
         <div>
-            <BlogDetailPage />
+            <SaasLanding />
         </div>
     )
 }
