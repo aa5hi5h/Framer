@@ -39,8 +39,8 @@ const SecondTestimonial = () => {
             <div className="flex flex-col justify-center items-center">
                 <h1 className="text-4xl font-bold tracking-tight">Clients Testimonials</h1>
                 <p className="text-lg text-muted-foreground mt-[0.7rem]">lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
-                <div className=" w-full mt-[2.3rem]">
-                <Carousel className="w-full max-w-5xl">
+                <div className=" w-full mt-[2.3rem] ">
+                <Carousel className="w-full  md:max-w-5xl">
       <CarouselContent className="-ml-1">
         {TestimonialPropList.map((items, index) => (
           <CarouselItem key={index} className="pl-1 ">

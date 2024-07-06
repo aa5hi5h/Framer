@@ -36,6 +36,8 @@ import FourthSignUp from "@/(packages)/components/SignUp/SignUp-4/page"
 import FirstTestimonial from "@/(packages)/components/Testimonials/Testimonials-1/page"
 import SecondTestimonial from "@/(packages)/components/Testimonials/Testimonials-2/page"
 import ThirdTestimonial from "@/(packages)/components/Testimonials/Testimonials-3/page"
+import BlogDetailPage from "@/(packages)/custom/Blog/(pages)/DetailPage"
+import BlogLanding from "@/(packages)/custom/Blog/(pages)/Landing"
 import BlogSignInPage from "@/(packages)/custom/Blog/(pages)/SignInPage"
 import BlogSignUpPage from "@/(packages)/custom/Blog/(pages)/SignUpPage"
 import EcommerceFeaturedPage from "@/(packages)/custom/Ecommerce/(pages)/featuredPage"
@@ -45,6 +47,9 @@ import EcommerceSignInPage from "@/(packages)/custom/Ecommerce/(pages)/SignInPag
 import EcommerceSignUpPage from "@/(packages)/custom/Ecommerce/(pages)/SignUpPage"
 import EcommerceStore from "@/(packages)/custom/Ecommerce/(pages)/store"
 import EcommerceStoreDetail from "@/(packages)/custom/Ecommerce/(pages)/StoreDetail"
+import LmsFeaturePage from "@/(packages)/custom/Lms/(pages)/FeaturePage"
+import LmsLanding from "@/(packages)/custom/Lms/(pages)/Landing"
+import LmsProductDetail from "@/(packages)/custom/Lms/(pages)/ProductDetail"
 import LmsSignIn from "@/(packages)/custom/Lms/(pages)/SignInPage"
 import LmsSignUp from "@/(packages)/custom/Lms/(pages)/SignUpPage"
 import RenatalsSignUp from "@/(packages)/custom/Rental/(pages)/SignUp"
@@ -54,7 +59,7 @@ import TwitterSignUp from "@/(packages)/custom/Twiter/(pages)/SignUp"
 const page = () => {
     return (
         <div>
-            <SaasSignIn />
+            <BlogDetailPage />
         </div>
     )
 }
