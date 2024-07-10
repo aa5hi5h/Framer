@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import { AiResponseProvider } from "./Context/AiResponseContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,10 +18,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <div className="max-w-7xl mx-auto">
-          <Navbar />
-          {children}</div></body>
+      <AiResponseProvider>
+        <body className={inter.className}>
+          <div className="max-w-7xl mx-auto">
+            <Navbar />
+            {children}</div></body>
+      </AiResponseProvider>
     </html>
   );
 }

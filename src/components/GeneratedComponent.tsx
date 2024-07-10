@@ -63,12 +63,22 @@ import TwitterNotification from "@/(packages)/custom/Twiter/(pages)/Notification
 import TwitterProfile from "@/(packages)/custom/Twiter/(pages)/Profile"
 import TwitterSignUp from "@/(packages)/custom/Twiter/(pages)/SignUp"
 
-const page = () => {
-    return (
-        <div>
-            <SaasLanding />
-        </div>
-    )
+const GeneratedComponents = ({aiResponse}:{aiResponse:string}) => {
+
+    switch(aiResponse.toLowerCase()){
+        case 'ecommerce':
+            return <EcommerceLanding />;
+        case 'blog':
+            return <BlogLanding />;
+        case 'lms':
+            return <LmsLanding />;
+        case 'rental':
+            return <RentalLanding />;
+        case 'saas':
+            return <SaasLanding />;
+        case 'social media':
+            return <TwitterLanding />
+    }
 }
 
-export default page
+export default GeneratedComponents
