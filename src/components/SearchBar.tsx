@@ -14,8 +14,10 @@ const SearchBar = () => {
     const { setAiResponse } = useAiResponse();
 
     const router = useRouter()
+
     const handleGenerate = async () => {
         try {
+            console.log(prompt)
             const response = await fetch('/api/generate', {
                 method: 'POST',
                 headers: {
@@ -23,15 +25,23 @@ const SearchBar = () => {
                 },
                 body: JSON.stringify({ prompt }),
             });
-
+    
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }      
+    
             const result = await response.json();
-            setAiResponse(result.response || "");
-            router.push("/sketch")
+            const text = result.candidates[0].content.parts[0].text
+            const category = text.trim().toLowerCase();
+            console.log(category)
+            setAiResponse(category || "");
+            router.push("/sketch");
         } catch (error) {
             console.error("Error generating website idea:", error);
-            alert(error)
+            alert(error);
         }
     };
+    
 
     return (
         <div className="relative selection:placeholder: w-full h-full flex flex-col space-y-2">

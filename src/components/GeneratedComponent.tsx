@@ -63,11 +63,37 @@ import TwitterNotification from "@/(packages)/custom/Twiter/(pages)/Notification
 import TwitterProfile from "@/(packages)/custom/Twiter/(pages)/Profile"
 import TwitterSignUp from "@/(packages)/custom/Twiter/(pages)/SignUp"
 
-const GeneratedComponents = ({aiResponse}:{aiResponse:string}) => {
+interface GeneratedComponentProp{
+    aiResponse: string,
+    viewMode: string,
+    currentPage: string
+}
+const GeneratedComponents = ({aiResponse,viewMode,currentPage}:GeneratedComponentProp) => {
 
+    console.log("viewmode in the generated component",viewMode)
+
+
+    const RenderComponent = () => {
+        switch(currentPage.toLowerCase()){
+            case 'landing':
+                return <EcommerceLanding viewMode={viewMode} />
+            case 'feature-1':
+                return <EcommerceFeaturedPage viewMode={viewMode} />
+            case 'product':
+                return <EcommerceProductDetail viewMode={viewMode} />
+            case 'feature-2':
+                return <EcommerceStore viewMode={viewMode} />
+            case 'store':
+                return <EcommerceStoreDetail viewMode={viewMode} />
+            case 'signup':
+                return <EcommerceSignUpPage viewMode={viewMode} />
+            case 'signin':
+                return <EcommerceSignInPage viewMode={viewMode} />
+        }
+    }
     switch(aiResponse.toLowerCase()){
         case 'ecommerce':
-            return <EcommerceLanding />;
+            return RenderComponent() ;
         case 'blog':
             return <BlogLanding />;
         case 'lms':
@@ -78,6 +104,8 @@ const GeneratedComponents = ({aiResponse}:{aiResponse:string}) => {
             return <SaasLanding />;
         case 'social media':
             return <TwitterLanding />
+        default : 
+        return <div>{aiResponse}</div>
     }
 }
 

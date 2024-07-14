@@ -21,7 +21,12 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet"
 
-const SecondNavbar  = () => {
+interface SecondNavbarProp{
+  viewMode: string
+}
+const SecondNavbar  = ({viewMode}:SecondNavbarProp) => {
+
+  if(viewMode === "monitor"){
     return (
         <div className="flex gap-4 border-b border-gray-300 p-3 items-center justify-between">
           <div className="hidden md:flex items-center gap-4 mr-8">
@@ -96,7 +101,7 @@ const SecondNavbar  = () => {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Category 1</NavigationMenuTrigger>
+          <NavigationMenuTrigger>Category</NavigationMenuTrigger>
           <NavigationMenuContent>
           <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
               <div>
@@ -138,105 +143,6 @@ const SecondNavbar  = () => {
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>Category 2</NavigationMenuTrigger>
-          <NavigationMenuContent>
-          <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-              <div>
-              <li className=" mt-4 text-lg font-medium">Product 1</li>
-              <p className="text-sm leading-tight text-muted-foreground">
-              Lorem ipsum dolor sit amet porro quisquam est qui dolorem
-                    </p>
-              </div>
-              <div>
-              <li className=" mt-4 text-lg font-medium">Product 2</li>
-              <p className="text-sm leading-tight text-muted-foreground">
-                     List your featured Product here and it will help boost the sale
-                    </p>
-              </div>
-              <div>
-              <li className=" mt-4 text-lg font-medium">Product 3</li>
-              <p className="text-sm leading-tight text-muted-foreground">
-                     List your featured Product here 
-                    </p>
-              </div>
-              <div>
-              <li className=" mt-4 text-lg font-medium">Product 4</li>
-              <p className="text-sm leading-tight text-muted-foreground">
-                     List your featured Product here
-                    </p>
-              </div>
-              <div>
-              <li className=" mt-4 text-lg font-medium">Product 5</li>
-              <p className="text-sm leading-tight text-muted-foreground">
-                     List your featured Product here
-                    </p>
-              </div>
-              <div>
-              <li className=" mt-4 text-lg font-medium">Product 6</li>
-              <p className="text-sm leading-tight text-muted-foreground">
-                     List your featured Product here
-                    </p>
-              </div>
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>Category 3</NavigationMenuTrigger>
-          <NavigationMenuContent>
-          <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-              <div>
-              <li className=" mt-4 text-lg font-medium">Item 1</li>
-              <p className="text-sm leading-tight text-muted-foreground">
-              Lorem ipsum dolor sit amet porro quisquam est qui dolorem
-                    </p>
-              </div>
-              <div>
-              <li className=" mt-4 text-lg font-medium">Item 2</li>
-              <p className="text-sm leading-tight text-muted-foreground">
-              Lorem ipsum dolor sit amet porro quisquam est qui dolorem
-                    </p>
-              </div>
-              <div>
-              <li className=" mt-4 text-lg font-medium">Item 3</li>
-              <p className="text-sm leading-tight text-muted-foreground">
-              Lorem ipsum dolor sit amet porro quisquam est qui dolorem
-                    </p>
-              </div>
-              <div>
-              <li className=" mt-4 text-lg font-medium">Item 4</li>
-              <p className="text-sm leading-tight text-muted-foreground">
-              Lorem ipsum dolor sit amet porro quisquam est qui dolorem
-                    </p>
-              </div>
-              <div>
-              <li className=" mt-4 text-lg font-medium">Item 5</li>
-              <p className="text-sm leading-tight text-muted-foreground">
-              Lorem ipsum dolor sit amet porro quisquam est qui dolorem
-                    </p>
-              </div>
-              <div>
-              <li className=" mt-4 text-lg font-medium">Item 6</li>
-              <p className="text-sm leading-tight text-muted-foreground">
-              Lorem ipsum dolor sit amet porro quisquam est qui dolorem
-                    </p>
-              </div>
-              <div>
-              <li className=" mt-4 text-lg font-medium">Item 7</li>
-              <p className="text-sm leading-tight text-muted-foreground">
-              Lorem ipsum dolor sit amet porro quisquam est qui dolorem
-                    </p>
-              </div>
-              <div>
-              <li className=" mt-4 text-lg font-medium">Item 8</li>
-              <p className="text-sm leading-tight text-muted-foreground">
-              Lorem ipsum dolor sit amet porro quisquam est qui dolorem
-                    </p>
-              </div>
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-        
       </NavigationMenuList>
     </NavigationMenu>
         </div>
@@ -259,6 +165,32 @@ const SecondNavbar  = () => {
         </div>
         </div>
     )
+  }
+
+  if(viewMode==="mobile"){
+    return (
+      <div className="flex gap-4 border-b border-gray-300 p-3 items-center justify-between">
+        <div className="flex ">
+        <Sheet>
+                       <SheetTrigger asChild><Menu /></SheetTrigger>
+                            <SheetContent className="space-y-4" side={"left"}>
+                                <SheetTitle className="text-3xl font-bold tracking-tight cursor-pointer">Logo</SheetTitle>
+                                <SheetTitle>Link one</SheetTitle>
+                                <SheetTitle>Link two</SheetTitle>
+                                <SheetTitle>Link three</SheetTitle>
+                            </SheetContent>
+                        </Sheet>
+        </div>
+        <div className="flex w-full gap-2 ">
+             <div className="flex w-full md:hidden lg:flex">
+                <Searchbar />
+            </div>
+          <Button>SignIn</Button>
+        </div>
+        </div>
+    )
+  }
+  
 }
 
 export default SecondNavbar
