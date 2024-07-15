@@ -30,6 +30,7 @@ import SecondNavbar from "@/(packages)/components/Navbar/Navbar-2/page"
 import FirstPricing from "@/(packages)/components/Pricing/Pricing-1/page"
 import SecondPricing from "@/(packages)/components/Pricing/Pricing-2/page"
 import ThirdPricing from "@/(packages)/components/Pricing/Pricing-3/page"
+import FirstSignUp from "@/(packages)/components/SignUp/SignUp-1/page"
 import SecondSignUp from "@/(packages)/components/SignUp/SignUp-2/page"
 import ThirdSignUp from "@/(packages)/components/SignUp/SignUp-3/page"
 import FourthSignUp from "@/(packages)/components/SignUp/SignUp-4/page"
@@ -66,12 +67,13 @@ import TwitterSignUp from "@/(packages)/custom/Twiter/(pages)/SignUp"
 interface GeneratedComponentProp{
     aiResponse: string,
     viewMode: string,
-    currentPage: string
+    currentPage: string,
+    componentPageConfig: Array<{ name: string } | string>;
 }
-const GeneratedComponents = ({aiResponse,viewMode,currentPage}:GeneratedComponentProp) => {
+const GeneratedComponents = ({aiResponse,viewMode,currentPage,componentPageConfig = []}:GeneratedComponentProp) => {
 
     console.log("viewmode in the generated component",viewMode)
-
+    console.log("Componet page Config",componentPageConfig)
 
     const RenderComponent = () => {
         switch(currentPage.toLowerCase()){
@@ -91,9 +93,58 @@ const GeneratedComponents = ({aiResponse,viewMode,currentPage}:GeneratedComponen
                 return <EcommerceSignInPage viewMode={viewMode} />
         }
     }
+
+    const RenderDynamicComponents = () => {
+        return componentPageConfig.map((component, index) => {
+            const componentName = typeof component === 'string' ? component.toLowerCase() : component?.name?.toLowerCase();
+            switch (componentName) {
+                case 'footer 1':
+                    return <FirstFooter key={index} />;
+                case 'footer 2':
+                    return <SecondFooter viewMode={viewMode} key={index} />
+                case 'navbar 1':
+                    return <Navbar  key={index} />;
+                case 'navbar 2':
+                    return <SecondNavbar viewMode={viewMode} key={index} />
+                case 'signup 1':
+                    return <FirstSignUp key={index} />;
+                case 'signup 2':
+                    return <SecondSignUp key={index} />;
+                case 'signup 3':
+                    return <ThirdSignUp key={index} />
+                case 'login':
+                    return <LoginLayout key={index} />;
+                case 'pricing':
+                    return <PricingLayout key={index} />;
+                case 'logo lists':
+                    return <LogoLayout key={index} />;
+                case 'listing':
+                    return <ListingLayout key={index} />;
+                case 'hero':
+                    return <HeroLayout key={index} />;
+                case 'header':
+                    return <HeaderLayout key={index} />;
+                case 'feature':
+                    return <Featurelayout key={index} />;
+                case 'faq':
+                    return <FaqLayout key={index} />;
+                case 'contact':
+                    return <ContactLayout key={index} />;
+                case 'testimonials':
+                    return <TestimonialsLayout key={index} />;
+                default:
+                    return null;
+            }
+        });
+    };
+
     switch(aiResponse.toLowerCase()){
         case 'ecommerce':
-            return RenderComponent() ;
+            return (
+            <>
+            {RenderComponent()}
+            {RenderDynamicComponents()}
+            </> ) ;
         case 'blog':
             return <BlogLanding />;
         case 'lms':

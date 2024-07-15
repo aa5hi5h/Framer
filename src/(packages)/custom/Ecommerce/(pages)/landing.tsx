@@ -142,12 +142,12 @@ const EcommerceLanding = ({viewMode}:EcommerceLandingProp) => {
                         </div>
             </div>
             <div className="flex flex-col space-y-4 mb-[8rem]">
-                <div className="flex justify-between ">
+                <div className="flex justify-between gap-x-2">
                     <span className="flex flex-col space-y-1">
                         <h1 className="text-2xl font-bold tracking-tight">Featured Prodcuts</h1>
                         <p className="text-sm text-slate-700">lore mipsum Neque m ipsum quia dolor</p>
                     </span>
-                    <Button className="flex mt-[6px] gap-x-2">
+                    <Button className="flex mt-[6px]">
                         view
                         <ChevronRight size={18} /></Button>
                 </div>
@@ -176,12 +176,12 @@ const EcommerceLanding = ({viewMode}:EcommerceLandingProp) => {
                 </div>
             </div>
             <div className="flex flex-col space-y-4 mb-[4rem]">
-                <div className="flex justify-between items-center">
+                <div className="flex justify-between gap-x-2 items-center">
                     <span className="flex flex-col space-y-1">
                         <h1 className="text-2xl font-bold tracking-tight">Featured shops</h1>
                         <p className="text-sm text-slate-700">lore mipsum Neque quia dolor</p>
                     </span>
-                    <Button className="flex gap-x-2">
+                    <Button className="flex">
                         view
                         <ChevronRight size={18} /></Button>
                 </div>

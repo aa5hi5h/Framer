@@ -4,6 +4,7 @@ import Socials from "../../props/Socials"
 const FirstFooter = () => {
     return (
         <div className="p-3 flex flex-col my-[2rem] ">
+             <hr className="w-full  mb-[2rem] h-[1px] border-gray-700" />
             <div className=" flex flex-col lg:flex-row space-y-6 justify-between items-center">
                 <h1 className="text-4xl font-bold tracking-tight">Logo</h1>
                 <ul className="flex flex-col lg:flex-row items-center space-y-2 lg:space-y-0 md:flex gap-4">
@@ -17,7 +18,6 @@ const FirstFooter = () => {
                     <Socials />
                 </div>
             </div>
-            <hr className="w-full  mt-[2rem] h-[1px] border-gray-700" />
         </div>
     )
 }

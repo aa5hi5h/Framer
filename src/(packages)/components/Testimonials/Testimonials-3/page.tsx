@@ -5,8 +5,8 @@ import useMeasure from "react-use-measure"
 import {animate ,motion , useMotionValue} from "framer-motion"
 const ThirdTestimonial = () => {
 
-    const SLOW_DURATION = 85
-    const FAST_DURATION = 40
+    const SLOW_DURATION = 130
+    const FAST_DURATION = 60
 
     const TestimonialPropList = [
         {name:"movingTestimonials"},

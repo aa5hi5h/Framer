@@ -12,6 +12,7 @@ export const AiResponseProvider = ({children}:{children:ReactNode}) => {
 
     const [aiResponse, setAiResponse] = useState<string>("")
 
+    
     return (
         <AiResponseContext.Provider value={{aiResponse,setAiResponse}} >
             {children}

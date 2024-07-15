@@ -6,6 +6,7 @@ import { usePageConfig } from "../Context/pageConfigContext"
 import Image, { StaticImageData } from "next/image"
 import { usePageSelection } from "../Context/ActivePageContext"
 import { AiResponseProvider, useAiResponse } from "../Context/AiResponseContext"
+import SidePannel from "@/components/SidePannel"
 
 interface itemComponentProp {
     id: number,
@@ -65,7 +66,7 @@ const Page = () => {
                         <div key={item.id} className="flex flex-col items-center p-2">
                             <Image src={item.img} 
                             alt={item.name} 
-                            className="h-15 w-35 border-[1px] border-zinc-300 rounded-md cursor-pointer  object-cover"
+                            className={`h-15 w-35 border-[2px] rounded-md cursor-pointer  object-cover ${currentPage === item.name ? "border-zinc-950": "border-zinc-300"}`}
                             onClick={() => handlePageChange(item.name)}  />
                         </div>
                     ))}
@@ -79,8 +80,8 @@ const Page = () => {
                 <WireMapView viewMode={viewMode} />
                </div>
             </div>
-            <div className="hidden lg:flex lg:col-span-2 bg-green-200 h-full ">
-                side options
+            <div className="hidden lg:flex lg:col-span-2 bg-slate-100 px-2 py-6 rounded-l-md h-full ">
+                <SidePannel />
             </div>
         </div>
     )

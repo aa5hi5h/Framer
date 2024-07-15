@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import { AiResponseProvider } from "./Context/AiResponseContext";
 import {PageConfigProvider} from "./Context/pageConfigContext"
 import { PageSelectionProvider } from "./Context/ActivePageContext";
+import { ComponentPageConfigProvider } from "./Context/ComponentPageContext";
 
 
 
@@ -25,10 +26,12 @@ export default function RootLayout({
       <AiResponseProvider>
         <PageConfigProvider>
           <PageSelectionProvider>
+            <ComponentPageConfigProvider>
         <body className={inter.className}>
           <div className="max-w-7xl mx-auto">
             <Navbar />
             {children}</div></body>
+            </ComponentPageConfigProvider>
             </PageSelectionProvider>
             </PageConfigProvider>
       </AiResponseProvider>
