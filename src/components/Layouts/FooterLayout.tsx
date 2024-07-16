@@ -2,8 +2,14 @@ import Image from "next/image"
 import FirstFooterPng from "../../../images/FirstFooter.png"
 import SecondFooterPng from "../../../images/SecondFooter.png"
 import {useComponentPageConfig } from "../../app/Context/ComponentPageContext"
+import { usePageSelection } from "@/app/Context/ActivePageContext"
+import { usePageConfig } from "@/app/Context/pageConfigContext"
 
 const FooterLayout = () => {
+
+    const { pageConfig, addPageConfig, ensureBlankPage } = usePageConfig();
+    const { currentPage, setCurrentPage } = usePageSelection();
+
     const Layouts = [
         {id:1,name:'Footer 1',img:FirstFooterPng},
         {id:2,name:'Footer 2',img:SecondFooterPng}
@@ -11,6 +17,8 @@ const FooterLayout = () => {
     const { addComponent} = useComponentPageConfig();
 
     const handleClick = (componentName:string) => {
+        ensureBlankPage();
+        setCurrentPage('Blank');
         addComponent(componentName)
     }
     return (

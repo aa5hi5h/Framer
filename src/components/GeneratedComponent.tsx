@@ -112,51 +112,97 @@ const GeneratedComponents = ({aiResponse,viewMode,currentPage,componentPageConfi
                     return <SecondSignUp key={index} />;
                 case 'signup 3':
                     return <ThirdSignUp key={index} />
-                case 'login':
-                    return <LoginLayout key={index} />;
-                case 'pricing':
-                    return <PricingLayout key={index} />;
-                case 'logo lists':
-                    return <LogoLayout key={index} />;
-                case 'listing':
-                    return <ListingLayout key={index} />;
-                case 'hero':
-                    return <HeroLayout key={index} />;
-                case 'header':
-                    return <HeaderLayout key={index} />;
-                case 'feature':
-                    return <Featurelayout key={index} />;
-                case 'faq':
-                    return <FaqLayout key={index} />;
-                case 'contact':
-                    return <ContactLayout key={index} />;
-                case 'testimonials':
-                    return <TestimonialsLayout key={index} />;
+                case 'signup 4':
+                    return <FourthSignUp key={index} />;
+                case 'login 1':
+                    return <FirstSignIn key={index} />;
+                case 'login 2':
+                    return <SecondSignIn key={index} />;
+                case 'login 3':
+                    return <ThirdSignIn key={index} />;
+                case 'login 4':
+                    return <FourthSignIn key={index} />;
+                case 'header 1':
+                    return <FirstHeader key={index} />;
+                case 'header 2':
+                    return <SecondHeader key={index} />;
+                case 'faq 1':
+                    return <FirstFAQ key={index} />;
+                case 'faq 2':
+                    return <SecondFAQ key={index} />;
+                case 'contact 1':
+                    return <FirstContact key={index} />;
+                case 'contact 2':
+                    return <SecondContact key={index} />;
+                case 'contact 3':
+                    return <ThirdContact key={index} />;
+                case 'contact 4':
+                    return <FourthContact key={index} />;
+                case 'feature 1':
+                    return <FirstItemDetail key={index} />;
+                case 'feature 2':
+                    return <SecondItemDetail key={index} />;
+                case 'hero 1':
+                    return <FirstHero key={index} />;
+                case 'hero 2':
+                    return <SecondHero key={index} />;
+                case 'hero 3':
+                    return <ThirdHero key={index} />;
+                case 'hero 4':
+                    return <FourthHero key={index} />;
+                case 'listing 1':
+                    return <FirstListing key={index} />;
+                case 'listing 2':
+                    return <SecondListing key={index} />;
+                case 'listing 3':
+                    return <ThirdListing key={index} />;
+                case 'logo 1':
+                    return <FirstLogo key={index} />;
+                case 'logo 2':
+                    return <SecondLogo key={index} />;
+                case 'logo 3':
+                    return <ThirdLogo key={index} />;
+                case 'pricing 1':
+                    return <FirstPricing key={index} />;
+                case 'pricing 2':
+                    return <SecondPricing key={index} />;
+                case 'pricing 3':
+                    return <ThirdPricing key={index} />;
+                case 'testimonials 1':
+                    return <FirstTestimonial key={index} />;
+                case 'testimonials 2':
+                    return <SecondTestimonial key={index} />;
+                case 'testimonials 3':
+                    return <ThirdTestimonial key={index} />;
                 default:
                     return null;
             }
         });
     };
 
-    switch(aiResponse.toLowerCase()){
-        case 'ecommerce':
-            return (
-            <>
-            {RenderComponent()}
-            {RenderDynamicComponents()}
-            </> ) ;
-        case 'blog':
-            return <BlogLanding />;
-        case 'lms':
-            return <LmsLanding />;
-        case 'rental':
-            return <RentalLanding />;
-        case 'saas':
-            return <SaasLanding />;
-        case 'social media':
-            return <TwitterLanding />
-        default : 
-        return <div>{aiResponse}</div>
+
+    if (currentPage.toLowerCase() === 'blank') {
+        return <>{RenderDynamicComponents()}</>;
+    } else {
+        switch(aiResponse.toLowerCase()){
+            case 'ecommerce':
+                return (
+                <>
+                {RenderComponent()}
+                </> ) ;
+            case 'blog':
+                return <BlogLanding />;
+            case 'lms':
+                return <LmsLanding />;
+            case 'rental':
+                return <RentalLanding />;
+            case 'saas':
+                return <SaasLanding />;
+            case 'social media':
+                return <TwitterLanding />
+            default : 
+            return <div>{aiResponse}</div>
+        }
     }
 }
 

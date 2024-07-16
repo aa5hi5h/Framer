@@ -4,8 +4,13 @@ import SecondSignUpPng from "../../../images/SecondSignUp.png"
 import THirdSignUpPng from "../../../images/ThirdSignUp.png"
 import FouthSignUpPng from "../../../images/FourthSignUp.png"
 import {useComponentPageConfig } from "../../app/Context/ComponentPageContext"
+import { usePageSelection } from "@/app/Context/ActivePageContext"
+import { usePageConfig } from "@/app/Context/pageConfigContext"
 
 const SignUpLayout = () => {
+
+    const { pageConfig, addPageConfig, ensureBlankPage } = usePageConfig();
+    const { currentPage, setCurrentPage } = usePageSelection();
 
     const Layouts = [
         {id:1,name:'SignUp 1',img:FirstSignUpPng},
@@ -17,6 +22,8 @@ const SignUpLayout = () => {
     const { addComponent} = useComponentPageConfig();
 
     const handleClick = (componentName:string) => {
+        ensureBlankPage();
+        setCurrentPage('Blank');
         addComponent(componentName)
     }
     return (

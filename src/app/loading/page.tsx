@@ -51,7 +51,8 @@ const page = () => {
     return (
         <div className="w-full">
             <div className="">
-                <ThirdTestimonial />
+                <SecondNavbar viewMode="monitor" />
+                <SecondHeader />
             </div>
         </div>
     )

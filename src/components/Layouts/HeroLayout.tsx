@@ -4,8 +4,14 @@ import SecondHeroPng from "../../../images/SecondHero.png"
 import ThirdHeroPng from "../../../images/ThirdHero.png"
 import FourthHeroPng from "../../../images/FourthHero.png"
 import {useComponentPageConfig } from "../../app/Context/ComponentPageContext"
+import { usePageSelection } from "@/app/Context/ActivePageContext"
+import { usePageConfig } from "@/app/Context/pageConfigContext"
 
 const HeroLayout = () => {
+
+    const { pageConfig, addPageConfig, ensureBlankPage } = usePageConfig();
+    const { currentPage, setCurrentPage } = usePageSelection();
+
     const Layouts = [
         {id:1,name:'Hero 1',img:FirstHeroPng},
         {id:2,name:'Hero 2',img:SecondHeroPng},
@@ -15,6 +21,8 @@ const HeroLayout = () => {
     const { addComponent} = useComponentPageConfig();
 
     const handleClick = (componentName:string) => {
+        ensureBlankPage();
+        setCurrentPage('Blank');
         addComponent(componentName)
     }
     return (

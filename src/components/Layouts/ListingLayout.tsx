@@ -3,8 +3,13 @@ import FirstListingPng from "../../../images/FirstListing.png"
 import SecondListingPng from "../../../images/SecondListing.png"
 import THirdListingPng from "../../../images/ThirdListing.png"
 import {useComponentPageConfig } from "../../app/Context/ComponentPageContext"
+import { usePageSelection } from "@/app/Context/ActivePageContext"
+import { usePageConfig } from "@/app/Context/pageConfigContext"
 
 const ListingLayout = () => {
+
+    const { pageConfig, addPageConfig, ensureBlankPage } = usePageConfig();
+    const { currentPage, setCurrentPage } = usePageSelection();
 
     const Layouts = [
         {id:1,name:'Listing 1',img:FirstListingPng},
@@ -14,6 +19,8 @@ const ListingLayout = () => {
     const { addComponent} = useComponentPageConfig();
 
     const handleClick = (componentName:string) => {
+        ensureBlankPage();
+        setCurrentPage('Blank');
         addComponent(componentName)
     }
     return (

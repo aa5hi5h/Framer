@@ -4,8 +4,13 @@ import SecondContactPng from "../../../images/SecondContact.png"
 import ThirdContactPng from "../../../images/ThirdContact.png"
 import FourthContact from "../../../images/FourthContact.png"
 import {useComponentPageConfig } from "../../app/Context/ComponentPageContext"
+import { usePageSelection } from "@/app/Context/ActivePageContext"
+import { usePageConfig } from "@/app/Context/pageConfigContext"
 
 const ContactLayout = () => {
+
+    const { pageConfig, addPageConfig, ensureBlankPage } = usePageConfig();
+    const { currentPage, setCurrentPage } = usePageSelection();
 
     const Layouts = [
         {id:1,name:'Contact 1',img:FirstContactPng},
@@ -17,6 +22,9 @@ const ContactLayout = () => {
     const { addComponent} = useComponentPageConfig();
 
     const handleClick = (componentName:string) => {
+        ensureBlankPage();
+        setCurrentPage('Blank');
+        console.log("charmender",componentName)
         addComponent(componentName)
     }
     return (

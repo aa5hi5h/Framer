@@ -2,8 +2,15 @@ import Image from "next/image"
 import FirstHeader from "../../../images/FirstHeader.png"
 import SecondHeader from "../../../images/SecondHeader.png"
 import {useComponentPageConfig } from "../../app/Context/ComponentPageContext"
+import { usePageSelection } from "@/app/Context/ActivePageContext"
+import { usePageConfig } from "@/app/Context/pageConfigContext"
 
 const HeaderLayout = () => {
+
+    const { pageConfig, addPageConfig, ensureBlankPage } = usePageConfig();
+    const { currentPage, setCurrentPage } = usePageSelection();
+
+
     const Layouts = [
         {id:1,name:'Header 1',img:FirstHeader},
         {id:2,name:'Header 2',img:SecondHeader}
@@ -11,6 +18,8 @@ const HeaderLayout = () => {
     const { addComponent} = useComponentPageConfig();
 
     const handleClick = (componentName:string) => {
+        ensureBlankPage();
+        setCurrentPage('Blank');
         addComponent(componentName)
     }
     return (

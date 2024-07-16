@@ -4,8 +4,13 @@ import SecondLoginPng from "../../../images/SecondLogin.png"
 import ThirdLoginPng from "../../../images/ThirdLogin.png"
 import FourthLoginPng from "../../../images/FourthLogin.png"
 import {useComponentPageConfig } from "../../app/Context/ComponentPageContext"
+import { usePageSelection } from "@/app/Context/ActivePageContext"
+import { usePageConfig } from "@/app/Context/pageConfigContext"
 
 const LoginLayout = () => {
+
+    const { pageConfig, addPageConfig, ensureBlankPage } = usePageConfig();
+    const { currentPage, setCurrentPage } = usePageSelection();
 
     const Layouts = [
         {id:1,name:'Login 1',img:FirstLoginPng},
@@ -17,6 +22,8 @@ const LoginLayout = () => {
     const { addComponent} = useComponentPageConfig();
 
     const handleClick = (componentName:string) => {
+        ensureBlankPage();
+        setCurrentPage('Blank');
         addComponent(componentName)
     }
     return (

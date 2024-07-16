@@ -2,8 +2,13 @@ import Image from "next/image"
 import FirstNavbar from "../../../images/Navbar-1.png"
 import SecondNavbar from "../../../images/Navbar-2.png"
 import {useComponentPageConfig } from "../../app/Context/ComponentPageContext"
-
+import { usePageConfig } from "@/app/Context/pageConfigContext"
+import { usePageSelection } from "@/app/Context/ActivePageContext"
+import BlankSectionPng from "../../../images/BlankSection.png"
 const NavbarLayout = () => {
+
+    const { pageConfig, addPageConfig, ensureBlankPage } = usePageConfig();
+    const { currentPage, setCurrentPage } = usePageSelection();
 
     const Layouts = [
         {id:1,name:'Navbar 1',img:FirstNavbar},
@@ -12,6 +17,8 @@ const NavbarLayout = () => {
     const { addComponent} = useComponentPageConfig();
 
     const handleClick = (componentName:string) => {
+        ensureBlankPage();
+        setCurrentPage('Blank');
         addComponent(componentName)
     }
     return (

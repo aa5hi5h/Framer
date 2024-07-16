@@ -15,7 +15,7 @@ export const ComponentPageConfigProvider = ({ children }) => {
 
     const addBlankPage = () => {
         if (!hasBlankPage) {
-            setComponentPageConfig((prevConfig) => [...prevConfig, { name: "Blank Section" }]);
+            setComponentPageConfig((prevConfig) => [...prevConfig, { name: "Blank" }]);
             setHasBlankPage(true);
         }
     };

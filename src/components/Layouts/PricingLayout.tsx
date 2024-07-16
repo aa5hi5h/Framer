@@ -3,8 +3,13 @@ import FirstPricingPng from "../../../images/FirstPricing.png"
 import SecondPricingPng from "../../../images/SecondPricing.png"
 import ThirdPricingPng from "../../../images/ThirdPricing.png"
 import {useComponentPageConfig } from "../../app/Context/ComponentPageContext"
+import { usePageConfig } from "@/app/Context/pageConfigContext"
+import { usePageSelection } from "@/app/Context/ActivePageContext"
 
 const PricingLayout = () => {
+
+    const { pageConfig, addPageConfig, ensureBlankPage } = usePageConfig();
+    const { currentPage, setCurrentPage } = usePageSelection();
 
     const Layouts = [
         {id:1,name:'Pricing 1',img:FirstPricingPng},
@@ -14,6 +19,8 @@ const PricingLayout = () => {
     const { addComponent} = useComponentPageConfig();
 
     const handleClick = (componentName:string) => {
+        ensureBlankPage();
+        setCurrentPage('Blank');
         addComponent(componentName)
     }
     return (

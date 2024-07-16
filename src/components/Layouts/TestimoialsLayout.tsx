@@ -2,16 +2,25 @@ import Image from "next/image"
 import FirstTestimonialPng from "../../../images/FirstTestimonial.png"
 import SecondTestimonialPng from "../../../images/SecondTestimonial.png"
 import ThirdTestimonialPng from "../../../images/ThirdTestimonial.png"
+import {useComponentPageConfig } from "../../app/Context/ComponentPageContext"
+import { usePageSelection } from "@/app/Context/ActivePageContext"
+import { usePageConfig } from "@/app/Context/pageConfigContext"
+
 const TestimonialsLayout = () => {
 
+    const { pageConfig, addPageConfig, ensureBlankPage } = usePageConfig();
+    const { currentPage, setCurrentPage } = usePageSelection();
+
     const Layouts = [
-        {id:1,name:'Pricing 1',img:FirstTestimonialPng},
-        {id:2,name:'Pricing 2',img:SecondTestimonialPng},
-        {id:3,name:'Pricing 3',img:ThirdTestimonialPng}
+        {id:1,name:'Testimonials 1',img:FirstTestimonialPng},
+        {id:2,name:'Testimonials 2',img:SecondTestimonialPng},
+        {id:3,name:'Testimonials 3',img:ThirdTestimonialPng}
     ]
     const { addComponent} = useComponentPageConfig();
 
     const handleClick = (componentName:string) => {
+        ensureBlankPage();
+        setCurrentPage('Blank');
         addComponent(componentName)
     }
     return (

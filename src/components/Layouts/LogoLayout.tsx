@@ -3,8 +3,13 @@ import FirstLogoListPng from "../../../images/FirstLogoList.png"
 import SecondLogoListPng from "../../../images/SecondLogoList.png"
 import ThirdLogoListPng from "../../../images/ThirdLogoList.png"
 import {useComponentPageConfig } from "../../app/Context/ComponentPageContext"
+import { usePageConfig } from "@/app/Context/pageConfigContext"
+import { usePageSelection } from "@/app/Context/ActivePageContext"
 
 const LogoLayout = () => {
+
+    const { pageConfig, addPageConfig, ensureBlankPage } = usePageConfig();
+    const { currentPage, setCurrentPage } = usePageSelection();
 
     const Layouts = [
         {id:1,name:'Logo 1',img:FirstLogoListPng},
@@ -15,6 +20,8 @@ const LogoLayout = () => {
     const { addComponent} = useComponentPageConfig();
 
     const handleClick = (componentName:string) => {
+        ensureBlankPage();
+        setCurrentPage('Blank');
         addComponent(componentName)
     }
     return (

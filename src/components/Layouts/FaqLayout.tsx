@@ -2,8 +2,14 @@ import Image from "next/image"
 import FirstFaqPng from "../../../images/FirstFaq.png"
 import SecondFaqPng from "../../../images/SecondFaq.png"
 import {useComponentPageConfig } from "../../app/Context/ComponentPageContext"
+import { usePageSelection } from "@/app/Context/ActivePageContext"
+import { usePageConfig } from "@/app/Context/pageConfigContext"
 
 const FaqLayout = () => {
+
+    const { pageConfig, addPageConfig, ensureBlankPage } = usePageConfig();
+    const { currentPage, setCurrentPage } = usePageSelection();
+
     const Layouts = [
         {id:1,name:'FAQ 1',img:FirstFaqPng},
         {id:2,name:'FAQ 2',img:SecondFaqPng}
@@ -11,8 +17,11 @@ const FaqLayout = () => {
     const { addComponent} = useComponentPageConfig();
 
     const handleClick = (componentName:string) => {
+        ensureBlankPage();
+        setCurrentPage('Blank');
         addComponent(componentName)
     }
+
     return (
         <div className="flex flex-col my-[8px] space-y-2">
             <h4  className="text-sm text-start px-[4px] pt-[4px] text-muted-foreground font-medium mb-1">Components</h4>
