@@ -1,8 +1,8 @@
+"use client"
 import { useAiResponse } from "@/app/Context/AiResponseContext"
 import GeneratedComponents from "./GeneratedComponent"
 import { usePageSelection } from "@/app/Context/ActivePageContext"
 import { useComponentPageConfig } from "@/app/Context/ComponentPageContext"
-
 
 interface WireMapViewProp{
     viewMode: string 

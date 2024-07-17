@@ -25,8 +25,8 @@ const LmsProductDetail = () => {
          </div>
         </div>
         <div className="hidden col-span-1 md:flex">
-            <div className="flex">
-            <div className="flex flex-col space-y-6 h-[88vh] px-3 border-r-[1px] border-slate-500">
+            <div className="flex ">
+            <div className="flex flex-col space-y-6 h-[88vh] px-3 border-r-[1px] border-slate-500 sticky top-0 bg-white z-10">
             <h2 className="text-2xl font-bold tracking-tight pt-[0.7rem]">Course Name</h2>
             <ul className="flex flex-col space-y-4">
                 <li className="flex gap-x-2 px-4 py-2 hover:bg-slate-200 rounded-md text-xl font-medium">Chapters</li>
@@ -40,7 +40,7 @@ const LmsProductDetail = () => {
             </div>
         </div>
         <div className="col-span-5 ">
-        <div className="flex justify-between items-center px-2 w-full md:hidden lg:flex">
+        <div className="flex justify-between items-center px-2 pt-2 w-full md:hidden lg:flex">
             <div className="w-[33%] hidden md:flex">
                 <Searchbar />
                 </div>
@@ -53,7 +53,7 @@ const LmsProductDetail = () => {
             <div className="p-6">
                 <LmsDetailCard />
             </div>
-            <SecondFooter />
+            <SecondFooter viewMode="monitor" />
         </div>
     </div>
     )

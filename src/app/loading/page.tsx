@@ -44,16 +44,20 @@ import EcommerceSignInPage from "@/(packages)/custom/Ecommerce/(pages)/SignInPag
 import EcommerceSignUpPage from "@/(packages)/custom/Ecommerce/(pages)/SignUpPage"
 import EcommerceStore from "@/(packages)/custom/Ecommerce/(pages)/store"
 import EcommerceStoreDetail from "@/(packages)/custom/Ecommerce/(pages)/StoreDetail"
+import LmsDashboard from "@/(packages)/custom/Lms/(pages)/Dashboard"
+import LmsFeaturePage from "@/(packages)/custom/Lms/(pages)/FeaturePage"
+import LmsLanding from "@/(packages)/custom/Lms/(pages)/Landing"
+import LmsProductDetail from "@/(packages)/custom/Lms/(pages)/ProductDetail"
+import LmsSignIn from "@/(packages)/custom/Lms/(pages)/SignInPage"
+import LmsSignUp from "@/(packages)/custom/Lms/(pages)/SignUpPage"
+import LmsProductCard from "@/(packages)/custom/Lms/components/LmsProductCard"
 import PricingLayout from "@/components/Layouts/PricingLayout"
 
 
 const page = () => {
     return (
         <div className="w-full">
-            <div className="">
-                <SecondNavbar viewMode="monitor" />
-                <SecondHeader />
-            </div>
+            <LmsSignIn />
         </div>
     )
 }

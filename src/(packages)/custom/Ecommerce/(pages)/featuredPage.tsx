@@ -14,7 +14,7 @@ interface EcommerceFeaturedPageProp{
 const EcommerceFeaturedPage = ({viewMode}:EcommerceFeaturedPageProp) => {
 
     
-    const FAST_DURATION = 15
+    const FAST_DURATION = 10
     const SLOW_DURATION = 35
 
     const ItemsList = [
@@ -144,15 +144,15 @@ if(viewMode === "mobile"){
     return (
         <div className="flex flex-col space-y-4">
         <SecondNavbar  viewMode="mobile" />
-        <div className="p-6">
+        <div className="p-2">
         <div className="flex flex-col space-y-4 mb-[4rem] mx-[0.7rem]">
                 <div className="flex justify-between items-center">
-                    <span className="flex flex-col space-y-2">
-                        <h1 className="text-3xl font-bold tracking-tight">Trending product this week</h1>
+                    <span className="flex flex-col space-y-1">
+                        <h1 className="text-2xl font-bold tracking-tight">Trending product this week</h1>
                         <p className="text-sm text-slate-700">lore mipsum Neque porro quisquam est qui dolorem ipsum quia dolor</p>
                     </span>
                 </div>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-8">
+                <div className="grid grid-cols-2 gap-4 mt-8">
                     {
                         ItemsList.map((item,index) => (
                             <FeaturedItems key={index} />
@@ -164,11 +164,11 @@ if(viewMode === "mobile"){
             </div>
             <div className="flex flex-col space-y-4 mb-[4rem] mx-[0.7rem]">
                 <div className="flex justify-between items-center">
-                    <span className="flex flex-col space-y-2">
-                        <h1 className="text-3xl font-bold tracking-tight">Sale on products</h1>
+                    <span className="flex flex-col space-y-1">
+                        <h1 className="text-2xl font-bold tracking-tight">Sale on products</h1>
                     </span>
                 </div>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-8">
+                <div className="grid grid-cols-2 gap-4 mt-8">
                     {
                         ItemsList.map((item,index) => (
                             <FeaturedItems key={index} />
@@ -180,11 +180,11 @@ if(viewMode === "mobile"){
             </div>
             <div className="flex flex-col space-y-4 mb-[6rem] mx-[0.7rem]">
                 <div className="flex justify-between items-center">
-                    <span className="flex flex-col space-y-2">
-                        <h1 className="text-3xl font-bold tracking-tight">Featured products</h1>
+                    <span className="flex flex-col space-y-1">
+                        <h1 className="text-2xl font-bold tracking-tight">Featured products</h1>
                     </span>
                 </div>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-8">
+                <div className="grid grid-cols-2 gap-4 mt-8">
                     {
                         ItemsList.map((item,index) => (
                             <FeaturedItems key={index} />
@@ -195,7 +195,7 @@ if(viewMode === "mobile"){
                     </div>
             </div>
             <div className="flex flex-col">
-                <h2 className="text-3xl font-bold tracking-tight">Category 1</h2>
+                <h2 className="text-2xl font-bold tracking-tight">Category 1</h2>
                 <div className="overflow-hidden">
                 <div className="max-w-7xl mx-auto">
                     <motion.div className=" w-full flex gap-x-8" ref={ref} style={{x:xStyles}}

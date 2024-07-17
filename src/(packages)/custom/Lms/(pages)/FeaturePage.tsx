@@ -25,7 +25,7 @@ const LmsFeaturePage = () => {
         </div>
         <div className="hidden col-span-1 md:flex">
             <div className="flex">
-            <div className="flex flex-col space-y-6 h-[88vh] px-6 border-r-[1px] border-slate-500">
+            <div className="flex flex-col space-y-6 h-[88vh] px-6 border-r-[1px] border-slate-500 sticky top-0 bg-white z-10">
             <h2 className="text-4xl font-bold tracking-tight px-4">Logo</h2>
             <ul className="flex flex-col space-y-4">
                 <li className="flex gap-x-2 px-4 py-2 hover:bg-slate-200 rounded-md text-xl font-medium">Home</li>

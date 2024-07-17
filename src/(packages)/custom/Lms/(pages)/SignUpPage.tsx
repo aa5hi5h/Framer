@@ -25,7 +25,7 @@ const LmsSignUp = () => {
          </div>
         </div>
         <div className="hidden col-span-1 md:flex">
-            <div className="flex">
+            <div className="flex sticky bg-white z-10 top-0">
             <div className="flex flex-col space-y-6 h-[88vh] px-6 border-r-[1px] border-slate-500">
             <h2 className="text-4xl font-bold tracking-tight px-4">Logo</h2>
             <ul className="flex flex-col space-y-4">
@@ -45,11 +45,11 @@ const LmsSignUp = () => {
                 </div>
                 <div className=" hidden md:flex gap-x-2">
                     <Button className="" variant={"ghost"}>Become a teacher</Button>
-                    <Button>Sign in</Button>
+                    <Button>Sign up</Button>
                 </div>
             </div>
             <hr className="w-full  h-[1px] border-gray-700 my-[1.7rem] " />
-            <ThirdSignUp />
+            <ThirdSignUp viewMode="monitor" />
         </div>
     </div>
     )

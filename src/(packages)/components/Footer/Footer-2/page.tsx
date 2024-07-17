@@ -48,7 +48,7 @@ const SecondFooter = ({viewMode}:SecondFooterProp) => {
 
 if(viewMode === "mobile"){
     return (
-        <div className=" flex w-full flex-col mb-[2rem]">
+        <div className=" flex w-full flex-col px-[0.5rem] mb-[2rem]">
             <hr className="w-full  mt-[3rem] h-[1px] border-gray-700 my-[3rem]" />
             <div className="grid grid-cols-3  space-y-8 mb-[2rem] md:space-y-0 justify-between items-start">
              <h1 className="text-4xl col-span-3 font-bold tracking-tight cursor-pointer">Logo</h1>
