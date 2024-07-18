@@ -23,18 +23,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <AiResponseProvider>
-        <PageConfigProvider>
+      <PageConfigProvider>
+        <AiResponseProvider>
           <PageSelectionProvider>
             <ComponentPageConfigProvider>
-        <body className={inter.className}>
-          <div className="max-w-7xl mx-auto">
-            <Navbar />
-            {children}</div></body>
+              <body className={inter.className}>
+                <div className="max-w-7xl mx-auto">
+                  <Navbar />
+                  {children}
+                </div>
+              </body>
             </ComponentPageConfigProvider>
-            </PageSelectionProvider>
-            </PageConfigProvider>
-      </AiResponseProvider>
+          </PageSelectionProvider>
+        </AiResponseProvider>
+      </PageConfigProvider>
     </html>
   );
 }

@@ -92,7 +92,7 @@ const BlogLanding = () => {
 
                 </div>
             </div>
-            <SecondFooter />
+            <SecondFooter viewMode="monitor" />
             </div>
         </div>
 

@@ -15,9 +15,10 @@ const TwitterSignUp = () => {
                        <SheetTrigger asChild><Menu /></SheetTrigger>
                             <SheetContent className="space-y-4" side={"left"}>
                                 <SheetTitle className="text-3xl font-bold tracking-tight cursor-pointer">Logo</SheetTitle>
-                                <SheetTitle>Link one</SheetTitle>
-                                <SheetTitle>Link two</SheetTitle>
-                                <SheetTitle>Link three</SheetTitle>
+                                <SheetTitle>Home</SheetTitle>
+                                <SheetTitle>Notification</SheetTitle>
+                                <SheetTitle>Profile</SheetTitle>
+                                <SheetTitle>Logout</SheetTitle>
                             </SheetContent>
                         </Sheet>
         </div>
@@ -28,7 +29,7 @@ const TwitterSignUp = () => {
                 <div className="col-span-3 w-full">
                     <div className="hidden w-full mx-auto mr-[4rem] lg:flex ">
                 </div>
-                    <ThirdSignUp />
+                    <ThirdSignUp viewMode="monitor" />
                 </div>
                 <div className="hidden col-span-1 lg:flex">
                     <FollowCard />

@@ -21,7 +21,7 @@ export const ComponentPageConfigProvider = ({ children }) => {
     };
 
     return (
-        <ComponentPageConfigContext.Provider value={{ ComponentpageConfig, addComponent, addBlankPage, hasBlankPage }}>
+        <ComponentPageConfigContext.Provider value={{ ComponentpageConfig, addComponent, addBlankPage, hasBlankPage}}>
             {children}
         </ComponentPageConfigContext.Provider>
     );

@@ -28,7 +28,7 @@ const TwitterProfile = () => {
                 <Sidebar />
             </div>
             <div className="col-span-3 flex flex-col  mt-[1.3rem] lg:mt-[1rem] w-full">
-            <h2 className="text-2xl md:text-4xl font-bold flex items-center tracking-tight"><ChevronLeft size={32} />Username</h2>
+            <h2 className="text-2xl md:text-4xl font-bold flex items-center tracking-tight"><ChevronLeft className="hover:bg-slate-100 rounded-md p-2 w-12 h-12" />Username</h2>
             <div className="flex flex-col space-y-4">
                 <div className="flex items-center justify-center h-[30vh] rounded-t-md w-full bg-slate-200 mt-[2rem] ml-0 md:ml-[-2rem]">
                     <Image size={28} className="opacity-80" />

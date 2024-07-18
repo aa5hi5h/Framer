@@ -7,17 +7,25 @@ import SecondTestimonial from "@/(packages)/components/Testimonials/Testimonials
 import SecondFAQ from "@/(packages)/components/FAQ/FAQ-2/page"
 import SecondFooter from "@/(packages)/components/Footer/Footer-2/page"
 import FirstTestimonial from "@/(packages)/components/Testimonials/Testimonials-1/page"
+import ThirdTestimonial from "@/(packages)/components/Testimonials/Testimonials-3/page"
 
 
-const LmsLanding = () => {
+interface LmsLandingProp{
+    viewMode: string
+}
+
+
+const LmsLanding = ({viewMode}:LmsLandingProp) => {
+
+if(viewMode === "monitor"){
     return (
         <div>
-            <BlogNavbar />
+            <BlogNavbar viewMode="monitor" />
             <div className="p-6">
             <div className="flex flex-col space-y-4">
             <div className="flex flex-col space-y-4 max-w-2xl mx-auto mt-[5.7rem]">
                     <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-center">Improve your learning experience</h1>
-                    <p className="text-slate-800 pb-[1.1rem] text-sm md:text-lg text-center pt-[0.2rem]">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
+                    <p className="text-slate-800 pb-[1.1rem] text-lg text-center pt-[0.2rem]">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
                         ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
                         laboris nisi ut aliquip"</p>
                         <div className="flex gap-x-4 mx-auto">
@@ -32,11 +40,42 @@ const LmsLanding = () => {
                     </div>
             </div>
         </div>
-        <FirstTestimonial />
-        <SecondFAQ />
-        <SecondFooter />
+        <SecondTestimonial />
+        <SecondFAQ viewMode="monitor" />
+        <SecondFooter viewMode="monitor" />
         </div>
     )
+}
+
+if(viewMode === "mobile"){
+    return (
+        <div>
+            <BlogNavbar viewMode="mobile" />
+            <div className="p-6">
+            <div className="flex flex-col space-y-4">
+            <div className="flex flex-col space-y-4 max-w-2xl mx-auto mt-[5.7rem]">
+                    <h1 className="text-3xl  font-bold tracking-tight text-center">Improve your learning experience</h1>
+                    <p className="text-slate-800 pb-[1.1rem] text-sm text-center pt-[0.2rem]">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
+                        laboris nisi ut aliquip"</p>
+                        <div className="flex gap-x-4 mx-auto">
+                            <Button>View courses</Button>
+                            <Button className="border-slate-300" variant={"outline"}>Login</Button>
+                        </div>
+                        </div>
+                        <div className="flex justify-center h-full w-full pt-[2.7rem] items-center">
+                        <div className="w-full h-[50vh] flex justify-center items-center bg-slate-200">
+                            <Image size={52} className="opacity-60" />
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <ThirdTestimonial viewMode="mobile"  />
+        <SecondFAQ viewMode="mobile" />
+        <SecondFooter viewMode="mobile" />
+        </div>
+    )
+}
+
 }
 
 export default LmsLanding

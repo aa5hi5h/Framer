@@ -3,7 +3,11 @@ import { useEffect, useState } from "react"
 import TestimonialProp from "../../props/TestimonialProp"
 import useMeasure from "react-use-measure"
 import {animate ,motion , useMotionValue} from "framer-motion"
-const ThirdTestimonial = () => {
+
+interface ThirdTestimonialProp{
+  viewMode: string
+}
+const ThirdTestimonial = ({viewMode}:ThirdTestimonialProp) => {
 
     const SLOW_DURATION = 130
     const FAST_DURATION = 60
@@ -65,9 +69,10 @@ const ThirdTestimonial = () => {
         return () => carouselControl?.stop();
       }, [xStyles, width, duration, mustFinish,render]);
 
+if(viewMode === "monitor"){
 
     return (
-        <div className="flex w-full h-full justify-center my-[4rem]  items-center p-6">
+        <div className="flex w-full h-full justify-center my-[2rem]  items-center p-6">
             <div className="flex flex-col justify-center items-center">
                 <h1 className="text-4xl font-bold tracking-tight">Clients Testimonials</h1>
                 <p className="text-lg text-muted-foreground mt-[0.7rem]">lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
@@ -100,5 +105,40 @@ const ThirdTestimonial = () => {
             </div>
     )
 }
+if(viewMode === "mobile"){
+  return (
+    <div className="flex w-full h-full justify-center my-[2rem]  items-center p-6">
+        <div className="flex flex-col justify-center items-center px-2">
+            <h1 className="text-3xl font-bold tracking-tight">Clients Testimonials</h1>
+            <p className="text-sm text-muted-foreground px-[0.5rem]  text-center mt-[0.7rem]">lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
+            <div className="overflow-hidden">
+            <div className="max-w-sm mx-auto ">
+            
+         <div className="flex w-full px-[4rem] gap-8  space-y-8 mb-4 ">
+           <motion.div className=" gap-6 mt-8 px-4" ref={ref} style={{x:xStyles}}
+            onHoverStart={() => {
+                setMustFinish(true)
+                setDuration(SLOW_DURATION)
+            }}
+            onHoverEnd={() => {
+                setDuration(FAST_DURATION)
+                setMustFinish(true)
+            }} >
+                <div className="flex gap-8 ">
+                {
+                    [...TestimonialPropList,...TestimonialPropList].map((items,index) => (
+                    <TestimonialProp key={index}  />
+                    ))
+                }
+                </div>
+            </motion.div>
+            </div>
+           </div>
+        </div>
+            </div>
+        </div>
+)
+}
 
+}
 export default ThirdTestimonial

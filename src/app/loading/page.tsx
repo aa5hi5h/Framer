@@ -37,6 +37,9 @@ import FourthSignUp from "@/(packages)/components/SignUp/SignUp-4/page"
 import FirstTestimonial from "@/(packages)/components/Testimonials/Testimonials-1/page"
 import SecondTestimonial from "@/(packages)/components/Testimonials/Testimonials-2/page"
 import ThirdTestimonial from "@/(packages)/components/Testimonials/Testimonials-3/page"
+import BlogDetailPage from "@/(packages)/custom/Blog/(pages)/DetailPage"
+import BlogLanding from "@/(packages)/custom/Blog/(pages)/Landing"
+import BlogSignInPage from "@/(packages)/custom/Blog/(pages)/SignInPage"
 import EcommerceFeaturedPage from "@/(packages)/custom/Ecommerce/(pages)/featuredPage"
 import EcommerceLanding from "@/(packages)/custom/Ecommerce/(pages)/landing"
 import EcommerceProductDetail from "@/(packages)/custom/Ecommerce/(pages)/productDetail"
@@ -51,13 +54,22 @@ import LmsProductDetail from "@/(packages)/custom/Lms/(pages)/ProductDetail"
 import LmsSignIn from "@/(packages)/custom/Lms/(pages)/SignInPage"
 import LmsSignUp from "@/(packages)/custom/Lms/(pages)/SignUpPage"
 import LmsProductCard from "@/(packages)/custom/Lms/components/LmsProductCard"
+import RentalsDetailCard from "@/(packages)/custom/Rental/(pages)/DetailCard"
+import RentalLanding from "@/(packages)/custom/Rental/(pages)/Landing"
+import SaasLanding from "@/(packages)/custom/Saas/(pages)/Landing"
+import TwitterDetail from "@/(packages)/custom/Twiter/(pages)/Detail"
+import TwitterLanding from "@/(packages)/custom/Twiter/(pages)/Landing"
+import TwitterNotification from "@/(packages)/custom/Twiter/(pages)/Notification"
+import TwitterProfile from "@/(packages)/custom/Twiter/(pages)/Profile"
+import TwitterSignUp from "@/(packages)/custom/Twiter/(pages)/SignUp"
+import TwitterSignIn from "@/(packages)/custom/Twiter/(pages)/SingIn"
 import PricingLayout from "@/components/Layouts/PricingLayout"
 
 
 const page = () => {
     return (
         <div className="w-full">
-            <LmsSignIn />
+            <TwitterSignUp />
         </div>
     )
 }

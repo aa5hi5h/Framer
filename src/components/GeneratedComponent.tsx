@@ -55,14 +55,17 @@ import LmsSignIn from "@/(packages)/custom/Lms/(pages)/SignInPage"
 import LmsSignUp from "@/(packages)/custom/Lms/(pages)/SignUpPage"
 import RentalsDetailCard from "@/(packages)/custom/Rental/(pages)/DetailCard"
 import RentalLanding from "@/(packages)/custom/Rental/(pages)/Landing"
+import RenatalsSignIn from "@/(packages)/custom/Rental/(pages)/SignIn"
 import RenatalsSignUp from "@/(packages)/custom/Rental/(pages)/SignUp"
 import SaasLanding from "@/(packages)/custom/Saas/(pages)/Landing"
 import SaasSignIn from "@/(packages)/custom/Saas/(pages)/SignIn"
+import SaasSignUp from "@/(packages)/custom/Saas/(pages)/SignUp"
 import TwitterDetail from "@/(packages)/custom/Twiter/(pages)/Detail"
 import TwitterLanding from "@/(packages)/custom/Twiter/(pages)/Landing"
 import TwitterNotification from "@/(packages)/custom/Twiter/(pages)/Notification"
 import TwitterProfile from "@/(packages)/custom/Twiter/(pages)/Profile"
 import TwitterSignUp from "@/(packages)/custom/Twiter/(pages)/SignUp"
+import TwitterSignIn from "@/(packages)/custom/Twiter/(pages)/SingIn"
 
 interface GeneratedComponentProp{
     aiResponse: string,
@@ -75,7 +78,7 @@ const GeneratedComponents = ({aiResponse,viewMode,currentPage,componentPageConfi
     console.log("viewmode in the generated component",viewMode)
     console.log("Componet page Config",componentPageConfig)
 
-    const RenderComponent = () => {
+    const RenderEcommerceComponent = () => {
         switch(currentPage.toLowerCase()){
             case 'landing':
                 return <EcommerceLanding viewMode={viewMode} />
@@ -94,6 +97,75 @@ const GeneratedComponents = ({aiResponse,viewMode,currentPage,componentPageConfi
         }
     }
 
+    const RenderLmsComponent = () => {
+        switch(currentPage.toLowerCase()){
+            case "landing": 
+                return <LmsLanding viewMode={viewMode} />
+            case 'explore':
+                return <LmsFeaturePage viewMode={viewMode} />
+            case 'signin':
+                return <LmsSignIn viewMode={viewMode} />
+            case 'signup':
+                return <LmsSignUp viewMode={viewMode} />
+            case 'course card':
+                return <LmsProductDetail viewMode={viewMode} />
+        }
+    }
+
+    const RenderBlogComponent = () => {
+        switch(currentPage.toLowerCase()){
+            case "landing": 
+                return <BlogLanding />
+            case 'blog detail':
+                return <BlogDetailPage />
+            case 'signin':
+                return <BlogSignInPage viewMode={viewMode} />
+            case 'signup':
+                return <BlogSignUpPage viewMode={viewMode} />
+        }
+    }
+
+    const RenderRentalComponent = () => {
+        switch(currentPage.toLowerCase()){
+            case "landing": 
+                return <RentalLanding />
+            case 'reservation':
+                return <RentalsDetailCard />
+            case 'signin':
+                return <RenatalsSignIn />
+            case 'signup':
+                return <RenatalsSignUp />
+        }
+    }
+
+    const RenderSaasComponent = () => {
+        switch(currentPage.toLowerCase()){
+            case "landing": 
+                return <SaasLanding />
+            case 'signin':
+                return <SaasSignIn />
+            case 'signup':
+                return <SaasSignUp />
+        }
+    }
+
+
+    const RenderSocialComponent = () => {
+        switch(currentPage.toLowerCase()){
+            case "landing": 
+                return <TwitterLanding />
+            case 'reply':
+                return <TwitterDetail />
+            case 'signin':
+                return <TwitterSignIn />
+            case 'signup':
+                return <TwitterSignUp />
+            case 'notification':
+                return <TwitterNotification />
+            case 'profile':
+                return <TwitterProfile />
+        }
+    }
     const RenderDynamicComponents = () => {
         return componentPageConfig.map((component, index) => {
             const componentName = typeof component === 'string' ? component.toLowerCase() : component?.name?.toLowerCase();
@@ -111,7 +183,7 @@ const GeneratedComponents = ({aiResponse,viewMode,currentPage,componentPageConfi
                 case 'signup 2':
                     return <SecondSignUp key={index} />;
                 case 'signup 3':
-                    return <ThirdSignUp key={index} />
+                    return <ThirdSignUp viewMode={viewMode} key={index} />
                 case 'signup 4':
                     return <FourthSignUp key={index} />;
                 case 'login 1':
@@ -119,7 +191,7 @@ const GeneratedComponents = ({aiResponse,viewMode,currentPage,componentPageConfi
                 case 'login 2':
                     return <SecondSignIn key={index} />;
                 case 'login 3':
-                    return <ThirdSignIn key={index} />;
+                    return <ThirdSignIn viewMode={viewMode} key={index} />;
                 case 'login 4':
                     return <FourthSignIn key={index} />;
                 case 'header 1':
@@ -141,7 +213,7 @@ const GeneratedComponents = ({aiResponse,viewMode,currentPage,componentPageConfi
                 case 'feature 1':
                     return <FirstItemDetail key={index} />;
                 case 'feature 2':
-                    return <SecondItemDetail key={index} />;
+                    return <SecondItemDetail viewMode={viewMode} key={index} />;
                 case 'hero 1':
                     return <FirstHero key={index} />;
                 case 'hero 2':
@@ -188,18 +260,38 @@ const GeneratedComponents = ({aiResponse,viewMode,currentPage,componentPageConfi
             case 'ecommerce':
                 return (
                 <>
-                {RenderComponent()}
+                {RenderEcommerceComponent()}
                 </> ) ;
             case 'blog':
-                return <BlogLanding />;
+                return (
+                    <>
+                    {RenderBlogComponent()}
+                    </>
+                )
             case 'lms':
-                return <LmsLanding />;
+                return (
+                    <>
+                    {RenderLmsComponent()}
+                    </> 
+                    ) ;
             case 'rental':
-                return <RentalLanding />;
+                return (
+                    <>
+                     {RenderRentalComponent()};
+                    </>
+                )
             case 'saas':
-                return <SaasLanding />;
-            case 'social media':
-                return <TwitterLanding />
+                return (
+                    <>
+                {RenderSaasComponent()};
+                </>
+                )
+            case 'social':
+                return (
+                    <>
+                     {RenderSocialComponent()}
+                    </>
+                )
             default : 
             return <div>{aiResponse}</div>
         }

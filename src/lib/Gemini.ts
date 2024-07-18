@@ -8,7 +8,7 @@ export const generateWebsiteIdeaGemini = async (prompt: string) => {
             method: "post",
             data: {
                 contents: [
-                    {parts: [{text: `Classify the following website idea into one of these categories: ecommerce, blog, lms, rental, saas, social media, or other:\n\n${prompt}\n\nGive a one-word answer from these options only:`}]}
+                    {parts: [{text: `Classify the following website idea into one of these categories: ecommerce, blog, lms, rental, saas, social , or other:\n\n${prompt}\n\nGive a one-word answer from these options only:`}]}
                 ]
             } ,
         }

@@ -3,17 +3,31 @@ import Navbar from "@/(packages)/components/Navbar/Navbar-1/page"
 import SecondNavbar from "@/(packages)/components/Navbar/Navbar-2/page"
 import BlogNavbar from "../components/Navbar"
 
+interface BlogSignInPageProp{
+    viewMode: string
+}
 
+const BlogSignInPage = ({viewMode}:BlogSignInPageProp) => {
 
-const BlogSignInPage = () => {
+if(viewMode === "monitor"){
     return (
         <div className="flex flex-col space-y-4">
-          <BlogNavbar />
+          <BlogNavbar viewMode="monitor"  />
           <div className="p-6 ">
-            <ThirdSignIn />
+            <ThirdSignIn viewMode="monitor" />
         </div>
         </div>
     )
 }
-
+if(viewMode === "mobile"){
+    return (
+        <div className="flex flex-col space-y-4">
+          <BlogNavbar viewMode="mobile"  />
+          <div className="p-6 ">
+            <ThirdSignIn viewMode="mobile" />
+        </div>
+        </div>
+    )
+}
+}
 export default BlogSignInPage

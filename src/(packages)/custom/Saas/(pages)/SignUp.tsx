@@ -9,7 +9,7 @@ const SaasSignUp = () => {
         <div className="flex flex-col space-y-4">
         <SaasNavbar />
         <div className="p-6">
-          <ThirdSignUp />
+          <ThirdSignUp viewMode="monitor" />
       </div>
       </div>
     )

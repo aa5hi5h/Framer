@@ -29,7 +29,7 @@ const TwitterDetail = () => {
                     <Sidebar />
                 </div>
                 <div className="col-span-3 flex flex-col  mt-[1.3rem] lg:mt-[1rem] w-full">
-                <h2 className="text-2xl md:text-4xl font-bold tracking-tight flex gap-x-1 items-center "><ChevronLeft size={32} />Back</h2>
+                <Button variant={"outline"} className="flex bg-slate-100 hover:bg-slate-200   items-center max-w-max "><ChevronLeft size={18} />Back</Button>
                 <div className="flex flex-col space-y-4 mt-[0.8rem] p-4">
                 <span className="flex items gap-x-1">
                         <CircleUser size={36} className="opacity-60" />

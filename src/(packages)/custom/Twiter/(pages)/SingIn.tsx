@@ -30,7 +30,7 @@ const TwitterSignIn = () => {
                 <div className="col-span-3 w-full">
                     <div className="hidden w-full mx-auto mr-[4rem] lg:flex ">
                 </div>
-                    <ThirdSignIn />
+                    <ThirdSignIn viewMode="monitor" />
                 </div>
                 <div className="hidden col-span-1 lg:flex">
                     <FollowCard />
