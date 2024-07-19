@@ -60,7 +60,7 @@ if(viewMode === "mobile"){
                   <BlogNavbar viewMode="mobile" />
          </div>
         </div>
-        <div className="col-span-5 p-2">
+        <div className="col-span-5">
             <ThirdSignIn viewMode="mobile" />
         </div>
         <div className="col-span-5">

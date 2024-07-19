@@ -115,9 +115,9 @@ const GeneratedComponents = ({aiResponse,viewMode,currentPage,componentPageConfi
     const RenderBlogComponent = () => {
         switch(currentPage.toLowerCase()){
             case "landing": 
-                return <BlogLanding />
+                return <BlogLanding viewMode={viewMode} />
             case 'blog detail':
-                return <BlogDetailPage />
+                return <BlogDetailPage viewMode={viewMode} />
             case 'signin':
                 return <BlogSignInPage viewMode={viewMode} />
             case 'signup':
@@ -128,24 +128,24 @@ const GeneratedComponents = ({aiResponse,viewMode,currentPage,componentPageConfi
     const RenderRentalComponent = () => {
         switch(currentPage.toLowerCase()){
             case "landing": 
-                return <RentalLanding />
+                return <RentalLanding viewMode={viewMode} />
             case 'reservation':
-                return <RentalsDetailCard />
+                return <RentalsDetailCard viewMode={viewMode} />
             case 'signin':
-                return <RenatalsSignIn />
+                return <RenatalsSignIn viewMode={viewMode} />
             case 'signup':
-                return <RenatalsSignUp />
+                return <RenatalsSignUp viewMode={viewMode} />
         }
     }
 
     const RenderSaasComponent = () => {
         switch(currentPage.toLowerCase()){
             case "landing": 
-                return <SaasLanding />
+                return <SaasLanding viewMode={viewMode} />
             case 'signin':
-                return <SaasSignIn />
+                return <SaasSignIn viewMode={viewMode} />
             case 'signup':
-                return <SaasSignUp />
+                return <SaasSignUp viewMode={viewMode} />
         }
     }
 
@@ -201,7 +201,7 @@ const GeneratedComponents = ({aiResponse,viewMode,currentPage,componentPageConfi
                 case 'faq 1':
                     return <FirstFAQ key={index} />;
                 case 'faq 2':
-                    return <SecondFAQ key={index} />;
+                    return <SecondFAQ viewMode={viewMode}  key={index} />;
                 case 'contact 1':
                     return <FirstContact key={index} />;
                 case 'contact 2':
@@ -245,7 +245,7 @@ const GeneratedComponents = ({aiResponse,viewMode,currentPage,componentPageConfi
                 case 'testimonials 2':
                     return <SecondTestimonial key={index} />;
                 case 'testimonials 3':
-                    return <ThirdTestimonial key={index} />;
+                    return <ThirdTestimonial viewMode={viewMode} key={index} />;
                 default:
                     return null;
             }

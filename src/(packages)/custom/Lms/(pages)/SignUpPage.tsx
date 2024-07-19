@@ -59,7 +59,7 @@ const LmsSignUp = ({viewMode}:LmsSignUpProp) => {
                       <BlogNavbar viewMode="mobile" />
              </div>
             </div>
-            <div className="col-span-5 p-2">
+            <div className="col-span-5">
                 <ThirdSignUp viewMode="mobile" />
             </div>
             <div className="col-span-5">

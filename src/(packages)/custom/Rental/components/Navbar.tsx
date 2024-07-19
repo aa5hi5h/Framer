@@ -1,7 +1,16 @@
+import Searchbar from "@/(packages)/components/props/Searchbar"
 import { Button } from "@/components/ui/button"
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
+import { Menu } from "lucide-react"
 
 
-const Navbar = () => {
+interface NavbarProp{
+    viewMode: string
+}
+
+const Navbar = ({viewMode}:NavbarProp) => {
+
+    if(viewMode === "monitor"){
     return (
         <div className="flex flex-col w-full px-4 ">
             <div className="max-w-6xl w-full my-[1.3rem] mx-auto flex items-center justify-between">
@@ -21,5 +30,31 @@ const Navbar = () => {
         </div>
     )
 }
+    if(viewMode==="mobile"){
+        return (
+          <div className="flex gap-4 border-b border-gray-300 p-3 items-center justify-between">
+            <div className="flex ">
+            <Sheet>
+                           <SheetTrigger asChild><Menu /></SheetTrigger>
+                                <SheetContent className="space-y-4" side={"left"}>
+                                    <SheetTitle className="text-3xl font-bold tracking-tight cursor-pointer">Logo</SheetTitle>
+                                    <SheetTitle>Link one</SheetTitle>
+                                    <SheetTitle>Link two</SheetTitle>
+                                    <SheetTitle>Link three</SheetTitle>
+                                </SheetContent>
+                            </Sheet>
+            </div>
+            <div className="flex w-full gap-2 ">
+                 <div className="flex w-full md:hidden lg:flex">
+                    <Searchbar />
+                </div>
+              <Button>SignIn</Button>
+            </div>
+            </div>
+        )
+      }
+}
+
+
 
 export default Navbar
