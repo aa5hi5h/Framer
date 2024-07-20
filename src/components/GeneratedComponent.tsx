@@ -153,17 +153,17 @@ const GeneratedComponents = ({aiResponse,viewMode,currentPage,componentPageConfi
     const RenderSocialComponent = () => {
         switch(currentPage.toLowerCase()){
             case "landing": 
-                return <TwitterLanding />
+                return <TwitterLanding viewMode={viewMode} />
             case 'reply':
-                return <TwitterDetail />
+                return <TwitterDetail viewMode={viewMode} />
             case 'signin':
-                return <TwitterSignIn />
+                return <TwitterSignIn viewMode={viewMode} />
             case 'signup':
-                return <TwitterSignUp />
+                return <TwitterSignUp viewMode = {viewMode} />
             case 'notification':
-                return <TwitterNotification />
+                return <TwitterNotification viewMode={viewMode} />
             case 'profile':
-                return <TwitterProfile />
+                return <TwitterProfile viewMode={viewMode} />
         }
     }
     const RenderDynamicComponents = () => {
