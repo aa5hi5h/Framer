@@ -29,7 +29,6 @@ export default function RootLayout({
             <ComponentPageConfigProvider>
               <body className={inter.className}>
                 <div className="max-w-7xl mx-auto">
-                  <Navbar />
                   {children}
                 </div>
               </body>

@@ -19,7 +19,8 @@ interface itemComponentProp {
     id: number,
     name: string,
     img: StaticImageData,
-    exportImg: StaticImageData
+    exportImg: StaticImageData,
+    mobileExportImg: StaticImageData
 }
 const Page = () => {
 
@@ -74,6 +75,7 @@ const Page = () => {
     const toggleExportMode = () => {
         console.log("bulbasaur",exportMode)
         setExportMode((prev) => !prev)
+        setViewMode("monitor")
     }
 
     useEffect(() => {
@@ -180,10 +182,10 @@ if(exportMode === true){
           <TransformWrapper>
             <>
               <TransformComponent>
-                <div className="w-[200vh] h-[100vh] my-[4rem] mx-[8rem] flex justify-center items-start" style={{ display: 'flex', flexDirection: 'row', gap: '10px' }}>
+                <div className="w-[200vh] h-[250vh] my-[4rem] mx-[8rem] flex justify-center items-start" style={{ display: 'flex', flexDirection: 'row', gap: '10px' }}>
                   {pageConfig[aiResponse]?.map((item: itemComponentProp) => (
                     <div onClick={() => handlePageChange(item.name)} key={item.id} className="flex hover:bg-green-100 cursor-pointer rounded-md flex-col items-center p-2">
-                      <Image src={item.exportImg}
+                      <Image src={viewMode === "mobile" ? item.mobileExportImg : item.exportImg}
                         alt={item.name}
                         width={400}
                         height={400}

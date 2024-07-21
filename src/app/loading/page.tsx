@@ -40,6 +40,8 @@ import ThirdTestimonial from "@/(packages)/components/Testimonials/Testimonials-
 import BlogDetailPage from "@/(packages)/custom/Blog/(pages)/DetailPage"
 import BlogLanding from "@/(packages)/custom/Blog/(pages)/Landing"
 import BlogSignInPage from "@/(packages)/custom/Blog/(pages)/SignInPage"
+import BlogSignUpPage from "@/(packages)/custom/Blog/(pages)/SignUpPage"
+import BlogNavbar from "@/(packages)/custom/Blog/components/Navbar"
 import EcommerceFeaturedPage from "@/(packages)/custom/Ecommerce/(pages)/featuredPage"
 import EcommerceLanding from "@/(packages)/custom/Ecommerce/(pages)/landing"
 import EcommerceProductDetail from "@/(packages)/custom/Ecommerce/(pages)/productDetail"
@@ -53,24 +55,33 @@ import LmsLanding from "@/(packages)/custom/Lms/(pages)/Landing"
 import LmsProductDetail from "@/(packages)/custom/Lms/(pages)/ProductDetail"
 import LmsSignIn from "@/(packages)/custom/Lms/(pages)/SignInPage"
 import LmsSignUp from "@/(packages)/custom/Lms/(pages)/SignUpPage"
+import LmsDetailCard from "@/(packages)/custom/Lms/components/LmsDetailCard"
 import LmsProductCard from "@/(packages)/custom/Lms/components/LmsProductCard"
 import RentalsDetailCard from "@/(packages)/custom/Rental/(pages)/DetailCard"
 import RentalLanding from "@/(packages)/custom/Rental/(pages)/Landing"
+import RenatalsSignIn from "@/(packages)/custom/Rental/(pages)/SignIn"
+import RenatalsSignUp from "@/(packages)/custom/Rental/(pages)/SignUp"
 import SaasLanding from "@/(packages)/custom/Saas/(pages)/Landing"
+import SaasSignIn from "@/(packages)/custom/Saas/(pages)/SignIn"
+import SaasSignUp from "@/(packages)/custom/Saas/(pages)/SignUp"
 import TwitterDetail from "@/(packages)/custom/Twiter/(pages)/Detail"
 import TwitterLanding from "@/(packages)/custom/Twiter/(pages)/Landing"
 import TwitterNotification from "@/(packages)/custom/Twiter/(pages)/Notification"
 import TwitterProfile from "@/(packages)/custom/Twiter/(pages)/Profile"
 import TwitterSignUp from "@/(packages)/custom/Twiter/(pages)/SignUp"
 import TwitterSignIn from "@/(packages)/custom/Twiter/(pages)/SingIn"
+import FollowCard from "@/(packages)/custom/Twiter/components/FollowCard"
+import Sidebar from "@/(packages)/custom/Twiter/components/Sidebar"
 import PricingLayout from "@/components/Layouts/PricingLayout"
+import { Button } from "@/components/ui/button"
+import { ArrowBigDown, ArrowBigUp, ChevronLeft, CircleUser, Image, MessageSquareMore } from "lucide-react"
 
 
 const page = () => {
     return (
-        <div className="w-full">
-            <TwitterSignUp />
-        </div>
+      <div className="w-full">
+        <TwitterSignUp viewMode="mobile" />
+      </div>
     )
 }
 
