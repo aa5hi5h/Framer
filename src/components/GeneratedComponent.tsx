@@ -253,7 +253,7 @@ const GeneratedComponents = ({aiResponse,viewMode,currentPage,componentPageConfi
     };
 
 
-    if (currentPage.toLowerCase() === 'blank') {
+    if (currentPage.toLowerCase().startsWith("blank")) {
         return <>{RenderDynamicComponents()}</>;
     } else {
         switch(aiResponse.toLowerCase()){

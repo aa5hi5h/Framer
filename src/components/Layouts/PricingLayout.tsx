@@ -5,12 +5,12 @@ import ThirdPricingPng from "../../../images/ThirdPricing.png"
 import {useComponentPageConfig } from "../../app/Context/ComponentPageContext"
 import { usePageConfig } from "@/app/Context/pageConfigContext"
 import { usePageSelection } from "@/app/Context/ActivePageContext"
+import { useBlankPageConfig } from "@/app/Context/BlankPageContext"
 
 const PricingLayout = () => {
 
-    const { pageConfig, addPageConfig, ensureBlankPage } = usePageConfig();
     const { currentPage, setCurrentPage } = usePageSelection();
-
+    const { ensureBlankPage, blankPageConfig } = useBlankPageConfig();
     const Layouts = [
         {id:1,name:'Pricing 1',img:FirstPricingPng},
         {id:2,name:'Pricing 2',img:SecondPricingPng},
@@ -20,9 +20,10 @@ const PricingLayout = () => {
 
     const handleClick = (componentName:string) => {
         ensureBlankPage();
-        setCurrentPage('Blank');
-        addComponent(componentName)
-    }
+        const targetPage = currentPage || blankPageConfig[0].name;
+        setCurrentPage(targetPage);
+        addComponent(componentName, targetPage);
+    };
     return (
         <div className="flex flex-col my-[8px] space-y-2">
             <h4  className="text-sm text-start px-[4px] pt-[4px] text-muted-foreground font-medium mb-1">Components</h4>

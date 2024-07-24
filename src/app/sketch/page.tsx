@@ -10,9 +10,10 @@ import SidePannel from "@/components/SidePannel"
 import { Button } from "@/components/ui/button"
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 import html2canvas from 'html2canvas';
-import { ChevronLeft, Download, HardDriveDownload } from "lucide-react"
+import { ChevronLeft, Download, HardDriveDownload, Plus, Trash2, X } from "lucide-react"
 import ExportViewOptions from "@/components/ExportViewOption"
 import ExportZoomOptions from "@/components/ExportZoomOptions"
+import { useBlankPageConfig } from "../Context/BlankPageContext"
 
 
 interface itemComponentProp {
@@ -22,6 +23,13 @@ interface itemComponentProp {
     exportImg: StaticImageData,
     mobileExportImg: StaticImageData
 }
+
+interface BlankPage {
+  id: number;
+  name: string;
+  img: StaticImageData;
+}
+
 const Page = () => {
 
     const [viewMode ,setViewMode] = useState<string>("monitor")
@@ -30,9 +38,10 @@ const Page = () => {
     const [scale, setScale] = useState<number>(1);
 
 
-    const { pageConfig, addPageConfig } = usePageConfig();
+    const { pageConfig} = usePageConfig();
     const { currentPage, setCurrentPage } = usePageSelection();
     const { aiResponse } = useAiResponse();
+    const { blankPageConfig, addBlankPage: addBlank,removeBlankPage } = useBlankPageConfig();
 
     console.log("current Pagre......................",currentPage)
     console.log("pageConfig........",pageConfig)
@@ -107,6 +116,15 @@ const Page = () => {
       setScale((prevScale) => Math.max(prevScale - 0.1, 0.5)); 
     };
 
+    const HandleAddBlankPage = () => {
+      addBlank();
+    }
+
+    const HandleRemoveBlankPage = (id:number) => {
+      removeBlankPage(id)
+      setCurrentPage("landing")
+    }
+
     if(exportMode === false){
     return (
         <div className="grid grid-cols-3 gap-[6px] lg:grid-cols-10">
@@ -122,16 +140,32 @@ const Page = () => {
                              <h3 className="text-[10px] text-center pt-[4px] text-muted-foreground font-medium">{item.name}</h3>
                         </div>
                     ))}
-                    {pageConfig['blank']?.map((item: itemComponentProp) => (
-                        <div onClick={() => handlePageChange(item.name)} key={item.id} className="flex hover:bg-purple-100 cursor-pointer rounded-md flex-col items-center p-2">
-                        <Image src={item.img} 
-                        alt={item.name} 
-                        width={100}
-                        height={100}
-                        className={`h-15 w-35 border-[2px] rounded-md object-cover ${currentPage === item.name ? "border-zinc-700": "border-zinc-300"}`}  />
-                         <h3 className="text-[10px] text-center pt-[4px] text-muted-foreground font-medium">{item.name}</h3>
-                    </div>
-                    ))}
+                   {blankPageConfig.map((item: BlankPage) => (
+                            <div
+                                onClick={() => handlePageChange(item.name)}
+                                key={item.id}
+                                className="flex hover:bg-purple-100 cursor-pointer rounded-md flex-col items-center p-2"
+                            >
+                               <Trash2
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        HandleRemoveBlankPage(item.id);
+                                    }}
+                                    className="w-[15px] h-[15px] mb-[6px] ml-auto text-red-400 hover:text-red-500"
+                                />
+                                <Image
+                                    src={item.img}
+                                    alt={item.name}
+                                    width={100}
+                                    height={100}
+                                    className={`h-15 w-35 border-[2px] rounded-md object-cover ${currentPage === item.name ? "border-purple-600" : "border-zinc-300"}`}
+                                />
+                                <h3 className="text-[10px] text-center pt-[4px] text-muted-foreground font-medium">{item.name}</h3>
+                            </div>
+                        ))}
+                    <div className="flex items-center justify-center">
+                  <Plus onClick={HandleAddBlankPage} size={22} className="ml-2 mb-2 w-6 h-6 text-purple-400 hover:text-purple-600 cursor-pointer" />
+                </div>
                 </div>
             </div>
             <div className="col-span-3 lg:col-span-7  bg-slate-100 p-2 rounded-md flex flex-col space-y-4">

@@ -17,12 +17,16 @@ import ContactLayout from "./Layouts/ContactLayout"
 import BlankSectionLayout from "./Layouts/BlankLayout"
 import TestimonialsLayout from "./Layouts/TestimoialsLayout"
 import {useComponentPageConfig } from "../app/Context/ComponentPageContext"
+import { usePageSelection } from "@/app/Context/ActivePageContext"
+import { useBlankPageConfig } from "@/app/Context/BlankPageContext"
 
 
 const SidePannelCard = () => {
 
-    const {addBlankPage, hasBlankPage } = useComponentPageConfig();
-    const [selectedComponents,setSelectedComponents] = useState<string | null>(null)
+    const { addComponent } = useComponentPageConfig();
+    const { currentPage, setCurrentPage } = usePageSelection();
+    const { ensureBlankPage, blankPageConfig } = useBlankPageConfig();
+    const [selectedComponents, setSelectedComponents] = useState<string | null>(null);
 
     const ComponentsList=[
         {id:1,name:"Blank Section"},
@@ -42,10 +46,8 @@ const SidePannelCard = () => {
     ]
 
     useEffect(() => {
-        if (!hasBlankPage) {
-            addBlankPage();
-        }
-    }, [hasBlankPage, addBlankPage]);
+        ensureBlankPage();
+    }, [ensureBlankPage]);
 
     
 

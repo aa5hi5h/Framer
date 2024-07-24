@@ -18,15 +18,8 @@ export const PageConfigProvider = ({ children }) => {
         setPageConfig(defaultConfig);
     };
 
-    const ensureBlankPage = () => {
-        if (!pageConfig['blank']) {
-            const blankPage = [{ id: Date.now(), name: 'Blank', img: BlankSectionPng }];
-            addPageConfig('blank', blankPage);
-        }
-    };
-
     return (
-        <PageConfigContext.Provider value={{ pageConfig, addPageConfig, ensureBlankPage,resetPageConfig }}>
+        <PageConfigContext.Provider value={{ pageConfig, addPageConfig,resetPageConfig }}>
             {children}
         </PageConfigContext.Provider>
     );

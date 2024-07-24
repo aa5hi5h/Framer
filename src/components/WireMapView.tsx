@@ -8,6 +8,15 @@ interface WireMapViewProp{
     viewMode: string 
 }
 
+interface Component {
+    name: string;
+}
+
+interface PageConfig {
+    name: string;
+    components: Component[] | string[];
+}
+
 const WireMapView = ({viewMode}:WireMapViewProp) => {
 
     const {aiResponse} = useAiResponse()
@@ -17,13 +26,15 @@ const WireMapView = ({viewMode}:WireMapViewProp) => {
     console.log(aiResponse)
     console.log(`Current view mode: ${viewMode}`);
 
+    const currentPageConfig = ComponentpageConfig.find((page: PageConfig) => page.name === currentPage) || { components: [] };
+
     return (
         <div className= {`w-full`}>
              {aiResponse && <GeneratedComponents 
              aiResponse={aiResponse} 
              currentPage={currentPage} 
              viewMode={viewMode}
-             componentPageConfig={ComponentpageConfig} />}
+             componentPageConfig={currentPageConfig.components} />}
         </div>
     )
 }

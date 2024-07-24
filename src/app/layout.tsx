@@ -6,6 +6,7 @@ import { AiResponseProvider } from "./Context/AiResponseContext";
 import {PageConfigProvider} from "./Context/pageConfigContext"
 import { PageSelectionProvider } from "./Context/ActivePageContext";
 import { ComponentPageConfigProvider } from "./Context/ComponentPageContext";
+import { BlankPageProvider } from "./Context/BlankPageContext";
 
 
 
@@ -23,12 +24,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <BlankPageProvider>
       <PageConfigProvider>
         <AiResponseProvider>
           <PageSelectionProvider>
             <ComponentPageConfigProvider>
               <body className={inter.className}>
                 <div className="max-w-7xl mx-auto">
+                  <Navbar />
                   {children}
                 </div>
               </body>
@@ -36,6 +39,7 @@ export default function RootLayout({
           </PageSelectionProvider>
         </AiResponseProvider>
       </PageConfigProvider>
+      </BlankPageProvider>
     </html>
   );
 }

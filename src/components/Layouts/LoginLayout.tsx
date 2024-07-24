@@ -6,11 +6,12 @@ import FourthLoginPng from "../../../images/FourthLogin.png"
 import {useComponentPageConfig } from "../../app/Context/ComponentPageContext"
 import { usePageSelection } from "@/app/Context/ActivePageContext"
 import { usePageConfig } from "@/app/Context/pageConfigContext"
+import { useBlankPageConfig } from "@/app/Context/BlankPageContext"
 
 const LoginLayout = () => {
 
-    const { pageConfig, addPageConfig, ensureBlankPage } = usePageConfig();
     const { currentPage, setCurrentPage } = usePageSelection();
+    const { ensureBlankPage, blankPageConfig } = useBlankPageConfig();
 
     const Layouts = [
         {id:1,name:'Login 1',img:FirstLoginPng},
@@ -23,9 +24,10 @@ const LoginLayout = () => {
 
     const handleClick = (componentName:string) => {
         ensureBlankPage();
-        setCurrentPage('Blank');
-        addComponent(componentName)
-    }
+        const targetPage = currentPage || blankPageConfig[0].name;
+        setCurrentPage(targetPage);
+        addComponent(componentName, targetPage);
+    };
     return (
         <div className="flex flex-col my-[8px] space-y-2">
             <h4  className="text-sm text-start px-[4px] pt-[4px] text-muted-foreground font-medium mb-1">Components</h4>
