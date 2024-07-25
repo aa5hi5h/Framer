@@ -125,13 +125,14 @@ const Page = () => {
       setCurrentPage("landing")
     }
 
+
     if(exportMode === false){
     return (
         <div className="grid grid-cols-3 gap-[6px] lg:grid-cols-10">
             <div className="hidden lg:flex lg:col-span-1  h-full pb-2 bg-slate-50 rounded-r-md">
-            <div className="flex flex-col  h-[95vh] overflow-y-auto space-y-2">
+            <div className="flex flex-col  h-[95vh] mt-[1rem] overflow-y-auto space-y-2">
                     {pageConfig[aiResponse]?.map((item:itemComponentProp) => (
-                        <div onClick={() => handlePageChange(item.name)} key={item.id} className="flex hover:bg-purple-100 cursor-pointer rounded-md flex-col items-center p-2">
+                        <div onClick={() => handlePageChange(item.name)} key={item.id} className="flex  hover:bg-purple-100 cursor-pointer rounded-md flex-col items-center p-2">
                             <Image src={item.img} 
                             alt={item.name} 
                             width={100}
@@ -221,8 +222,8 @@ if(exportMode === true){
                     <div onClick={() => handlePageChange(item.name)} key={item.id} className="flex hover:bg-green-100 cursor-pointer rounded-md flex-col items-center p-2">
                       <Image src={viewMode === "mobile" ? item.mobileExportImg : item.exportImg}
                         alt={item.name}
-                        width={400}
-                        height={400}
+                        width={200}
+                        height={200}
                         className={`h-15 w-35 object-cover items-start`} />
                       <h3 className="text-[10px] text-center pt-[4px] text-muted-foreground font-medium">{item.name}</h3>
                     </div>

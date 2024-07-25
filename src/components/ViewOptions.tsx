@@ -28,24 +28,12 @@ const ViewOptions = ({onViewChange}:ViewOptionsProp) => {
                 <TooltipContent>Dekstop</TooltipContent>
                 </Tooltip>
                 <Tooltip>
-                    <TooltipTrigger asChild>
-                <Tablet onClick={() => handleClick("tablet")} className={`w-6 h-6 p-1 ${selectedView === "tablet" ? "bg-slate-100": "hover:bg-slate-100"} rounded-md`} />
-                </TooltipTrigger>
-                <TooltipContent>Tablet</TooltipContent>
-                </Tooltip>
-                <Tooltip>
                     <TooltipTrigger>
                 <Smartphone onClick={() => handleClick("mobile")} className={`w-6 h-6 p-1 ${selectedView === "mobile" ? "bg-slate-100" :"hover:bg-slate-100"} rounded-md`} />
                 </TooltipTrigger>
                 <TooltipContent>Mobile</TooltipContent>
                 </Tooltip>
-                <hr className=" border-[1px] border-gray-300 h-[4vh]" />
-                <Tooltip>
-                    <TooltipTrigger asChild>
-                <Maximize className="w-6 h-6 p-1 hover:bg-slate-100 rounded-md" />
-                </TooltipTrigger>
-                <TooltipContent>Full screen</TooltipContent>
-                </Tooltip>
+             
                 </TooltipProvider>
     )
 }

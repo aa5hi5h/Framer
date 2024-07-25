@@ -7,7 +7,7 @@ import {PageConfigProvider} from "./Context/pageConfigContext"
 import { PageSelectionProvider } from "./Context/ActivePageContext";
 import { ComponentPageConfigProvider } from "./Context/ComponentPageContext";
 import { BlankPageProvider } from "./Context/BlankPageContext";
-
+import { ClerkProvider } from '@clerk/nextjs'
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -23,6 +23,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    <ClerkProvider>
     <html lang="en">
       <BlankPageProvider>
       <PageConfigProvider>
@@ -41,5 +42,6 @@ export default function RootLayout({
       </PageConfigProvider>
       </BlankPageProvider>
     </html>
+    </ClerkProvider>
   );
 }

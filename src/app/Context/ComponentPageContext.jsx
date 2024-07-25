@@ -13,7 +13,6 @@ export const ComponentPageConfigProvider = ({ children }) => {
         setComponentPageConfig((prevConfig) => {
             const pageIndex = prevConfig.findIndex(page => page.name === pageName);
             if (pageIndex > -1) {
-                // Page exists, update it
                 const updatedConfig = prevConfig.map((page, index) => {
                     if (index === pageIndex) {
                         return { ...page, components: [...page.components, component] };
@@ -23,7 +22,6 @@ export const ComponentPageConfigProvider = ({ children }) => {
                 console.log("Updated config after adding component:", updatedConfig);
                 return updatedConfig;
             } else {
-                // Page does not exist, create it
                 const newPage = { name: pageName, components: [component] };
                 const updatedConfig = [...prevConfig, newPage];
                 console.log("Added new page with component:", updatedConfig);
@@ -41,9 +39,23 @@ export const ComponentPageConfigProvider = ({ children }) => {
         }
     };
 
+    const reorderComponents = (pageName, startIndex, endIndex) => {
+        setComponentPageConfig((prevConfig) => {
+            return prevConfig.map((page) => {
+                if (page.name === pageName) {
+                    const components = Array.from(page.components);
+                    const [removed] = components.splice(startIndex, 1);
+                    components.splice(endIndex, 0, removed);
+                    return { ...page, components };
+                }
+                return page;
+            });
+        });
+    };
+
 
     return (
-        <ComponentPageConfigContext.Provider value={{ ComponentpageConfig, addComponent, addBlankPage, hasBlankPage}}>
+        <ComponentPageConfigContext.Provider value={{ ComponentpageConfig, addComponent, addBlankPage, hasBlankPage,reorderComponents}}>
             {children}
         </ComponentPageConfigContext.Provider>
     );

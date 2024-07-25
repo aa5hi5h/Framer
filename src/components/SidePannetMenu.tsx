@@ -15,8 +15,7 @@ const SidePannelMenu = ({handleEdit,handleCreate,selectedIcon}:SidePannelMenuPro
 
     return (
       <div className="flex gap-x-4">
-        <PencilRuler onClick={() => handleEdit('edit')} className={`h-10 w-10 p-2 cursor-pointer rounded-md border-[1px] ${selectedIcon === "edit" ? 'border-zinc-950': 'border-slate-300'} `} />
-        <Plus onClick={() => handleCreate("add")} className={`h-10 w-10 p-2 cursor-pointer rounded-md border-[1px] ${selectedIcon === 'add' ? "border-slate-950": 'border-slate-300' } `} />
+        <Plus onClick={() => handleCreate("add")} className={`h-10 w-10 p-2 cursor-pointer rounded-md border-[1px] ${selectedIcon === 'add' ? "border-purple-700": 'border-slate-300' } `} />
       </div>
     )
 }

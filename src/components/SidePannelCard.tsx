@@ -20,13 +20,22 @@ import {useComponentPageConfig } from "../app/Context/ComponentPageContext"
 import { usePageSelection } from "@/app/Context/ActivePageContext"
 import { useBlankPageConfig } from "@/app/Context/BlankPageContext"
 
+interface SidePannelCard {
+    selectedIcon: string | null
+    clearSelection: () => void;
+}
 
-const SidePannelCard = () => {
+const SidePannelCard = ({selectedIcon,clearSelection}:SidePannelCard) => {
 
     const { addComponent } = useComponentPageConfig();
     const { currentPage, setCurrentPage } = usePageSelection();
-    const { ensureBlankPage, blankPageConfig } = useBlankPageConfig();
+    const { ensureBlankPage, blankPageConfig,addBlankPage} = useBlankPageConfig();
     const [selectedComponents, setSelectedComponents] = useState<string | null>(null);
+    const [renderAllPages,setRenderAllpages] = useState<boolean>(false)
+    const [searchQuery, setSearchQuery] = useState<string>("");
+    const [allPagesSearchQuery, setAllPagesSearchQuery] = useState<string>("");
+
+
 
     const ComponentsList=[
         {id:1,name:"Blank Section"},
@@ -44,11 +53,6 @@ const SidePannelCard = () => {
         {id:13,name:'SignUp'},
         {id:14,name:'Testimonials'}
     ]
-
-    useEffect(() => {
-        ensureBlankPage();
-    }, [ensureBlankPage]);
-
     
 
     const RenderComponentLayout = () => {
@@ -84,18 +88,35 @@ const SidePannelCard = () => {
     }
     }
 
-    if(!selectedComponents){
+    const HandleAddPage = () => {
+        addBlankPage()
+    }
+
+    const ToggleRenderPages = () => setRenderAllpages(true)
+
+    const filteredComponentsList = ComponentsList.filter(component =>
+        component.name.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+
+      const filteredAllPagesList = ComponentsList.filter(component =>
+        component.name.toLowerCase().includes(allPagesSearchQuery.toLowerCase())
+      );
+
+    if(!selectedComponents && !renderAllPages){
     return (
         <div className="flex w-full flex-col space-y-4">
-            <Input className="bg-slate-100 flex gap-x-4 border-[1px] focus:outline-none focus:bg-white focus:border-slate-500 focus-visible:ring-0 focus-visible:ring-offset-0"
-            placeholder="Type here to search..." >
-            </Input>
+            <Input
+          className="bg-slate-100 flex gap-x-4 border-[1px] focus:outline-none focus:bg-white focus:border-slate-500 focus-visible:ring-0 focus-visible:ring-offset-0"
+          placeholder="Type here to search..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
             <div className="flex gap-x-4">
-                <div className="w-[45%] h-[10vh] pt-[4px] cursor-pointer flex flex-col items-center justify-center rounded-md bg-slate-100">
+                <div onClick={HandleAddPage} className="w-[45%] h-[10vh] pt-[4px] cursor-pointer flex flex-col items-center justify-center rounded-md bg-slate-100">
                     <FolderPlus className="text-slate-500" />
                     <h5 className="text-[12px] font-semibold mt-[1px]">Create</h5>
                 </div>
-                <div className="w-[45%] h-[10vh] pt-[4px] cursor-pointer flex flex-col items-center justify-center rounded-md bg-slate-100">
+                <div onClick={ToggleRenderPages} className="w-[45%] h-[10vh] pt-[4px] cursor-pointer flex flex-col items-center justify-center rounded-md bg-slate-100">
                     <FileDown className="text-slate-500" />
                     <h5 className="text-[12px] font-semibold mt-[1px]">Pages</h5>
                 </div>
@@ -118,12 +139,12 @@ const SidePannelCard = () => {
             <div className="flex flex-col w-full">
                 <h3 className="text-sm pt-[4px] text-muted-foreground font-medium">All Section</h3>
                 <div className=" flex flex-col w-full">
-                    {ComponentsList.map((item,index) => (
-                        <span key={item.id} onClick={() => setSelectedComponents(item.name)} className="w-full mt-[8px] flex justify-between px-2 py-1  rounded-md border-[1px] border-slate-300 items-center">
-                        <h3 className="text-[1rem]  w-full font-medium">{item.name}</h3>
-                        <Plus />
-                    </span>
-                    ))}
+                {filteredComponentsList.map((item) => (
+              <span key={item.id} onClick={() => setSelectedComponents(item.name)} className="w-full mt-[8px] flex justify-between px-2 py-1  rounded-md border-[1px] border-slate-300 items-center">
+                <h3 className="text-[1rem]  w-full font-medium">{item.name}</h3>
+                <Plus />
+              </span>
+            ))}
                 </div>
             </div>
         </div>
@@ -138,12 +159,7 @@ if(selectedComponents){
         <ChevronLeft onClick={() => setSelectedComponents(null)} className="h-6 w-6 p-1 rounded-md cursor-pointer hover:bg-slate-100 " />
         <h3 className="text-[14px] font-medium">{selectedComponents} Section</h3>
         </div>
-        <X className="h-6 w-6 p-1 rounded-md cursor-pointer hover:bg-slate-100 "/>
-        </div>
-        <div className="pt-[-8px]">
-        <Input className="bg-slate-100  flex gap-x-4 border-[1px] focus:outline-none focus:bg-white focus:border-slate-500 focus-visible:ring-0 focus-visible:ring-offset-0"
-        placeholder="Type here to search..." >
-        </Input>
+        <X onClick={clearSelection} className="h-6 w-6 p-1 rounded-md cursor-pointer hover:bg-slate-100 "/>
         </div>
         <div className="mt-4">
                 {RenderComponentLayout()}
@@ -151,6 +167,49 @@ if(selectedComponents){
         </div>
     )
 }
+
+if (renderAllPages) {
+    return (
+      <div className="flex w-full flex-col space-y-2">
+        <div className="flex items-center gap-x-4 justify-between">
+          <div className="flex items-center gap-x-1">
+            <ChevronLeft onClick={() => setRenderAllpages(false)} className="h-6 w-6 p-1 rounded-md cursor-pointer hover:bg-slate-100 " />
+            <h3 className="text-[14px] font-medium">All Pages</h3>
+          </div>
+          <X onClick={clearSelection} className="h-6 w-6 p-1 rounded-md cursor-pointer hover:bg-slate-100 " />
+        </div>
+        <div className="pt-[-8px]">
+        <Input
+            className="bg-slate-100 flex gap-x-4 border-[1px] focus:outline-none focus:bg-white focus:border-slate-500 focus-visible:ring-0 focus-visible:ring-offset-0"
+            placeholder="Type here to search..."
+            value={allPagesSearchQuery}
+            onChange={(e) => setAllPagesSearchQuery(e.target.value)}
+          />
+        </div>
+        <div className="pt-4">
+        {filteredAllPagesList.map((item) => (
+            <div key={item.id} className="mb-4">
+              <h3 className="text-lg font-semibold mb-2">{item.name}</h3>
+              {item.name === "Contact" && <ContactLayout />}
+              {item.name === "FAQ" && <FaqLayout />}
+              {item.name === "Feature" && <Featurelayout />}
+              {item.name === "Footer" && <FooterLayout />}
+              {item.name === "Header" && <HeaderLayout />}
+              {item.name === "Hero" && <HeroLayout />}
+              {item.name === "Listing" && <ListingLayout />}
+              {item.name === "Login" && <LoginLayout />}
+              {item.name === "Logo lists" && <LogoLayout />}
+              {item.name === "Navbar" && <NavbarLayout />}
+              {item.name === "Pricing" && <PricingLayout />}
+              {item.name === "SignUp" && <SignUpLayout />}
+              {item.name === "Testimonials" && <TestimonialsLayout />}
+            </div>
+          ))}
+        </div>
+      </div>
+    )
+  }
+
 }
 
 export default SidePannelCard

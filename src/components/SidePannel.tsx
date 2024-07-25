@@ -23,7 +23,7 @@ const SidePannel = () => {
            </div>
            {selectedIcon !== null && (
            <div className="w-full p-2 h-[70vh] overflow-y-scroll bg-white rounded-lg border-[2px] border-slate-300">
-            <SidePannelCard />
+            <SidePannelCard selectedIcon={selectedIcon} clearSelection={() => setSelectedIcon(null)} />
            </div>
             )}
         </div>
