@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { generateWebsiteIdeaGemini } from '@/lib/Gemini';
+import { generateWebsiteIdeaGemini } from '../../../lib/Gemini';
+import { useCustomPrompt } from '@/app/Context/CustomPromptContext';
 
 
 export async function POST(request: Request) {
@@ -8,6 +9,7 @@ export async function POST(request: Request) {
         if (!prompt) {
             return new Response("Prompt is required", { status: 400 });
         }
+
 
         const response = await generateWebsiteIdeaGemini(prompt);
 

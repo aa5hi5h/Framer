@@ -139,6 +139,11 @@ export const pageConfig: pageConfig = {
         {id:4,name:"Profile",img:SocialMediaProfilePng,exportImg:ExportSocialProfilePng, mobileExportImg:ExportMobileSocialProfile},
         {id:5,name:"SignIn",img:SocialMediaSignInPng,exportImg:ExportSocialSignInPng, mobileExportImg:ExportMobileSocialSignIn},
         {id:6,name:"SignUp",img:SocialMediaSignUpPng,exportImg:ExportSocialSignUpPng, mobileExportImg:ExportMobileSocialSignUp}
+    ],
+    other : [
+        {id:1,name:"Landing",img:SaasLandingPng,exportImg:ExportSaasLandingPng, mobileExportImg:ExportMobileSaasLanding},
+        {id:2,name:"SignIn",img:SaasSignInPng ,exportImg:ExportSaasSignInPng, mobileExportImg:ExportMobileSaasSignIn},
+        {id:3,name:"SignUp",img:SaasSignUpPng, exportImg:ExportSaasSignUpPng, mobileExportImg:ExportMobileSaasSignUp}
     ]
 }
 

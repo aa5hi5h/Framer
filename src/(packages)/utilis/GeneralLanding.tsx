@@ -8,18 +8,21 @@ import { animate, useMotionValue,motion } from "framer-motion"
 import { useState,useEffect } from "react"
 import useMeasure from "react-use-measure"
 import ItemsCaraousel from "@/(packages)/components/props/ItemsCarousel"
+import { useCustomPrompt } from "@/app/Context/CustomPromptContext"
 
 
-interface SaasLandingProp{
+interface GenerateLandingProp{
     viewMode: string
 }
 
-const SaasLanding = ({viewMode}:SaasLandingProp) => {
+const GeneralLanding = ({viewMode}:GenerateLandingProp) => {
 
 
     const ItemsList = [
         {name:1},{name:1},{name:1},{name:1}, {name:1},{name:1},{name:1},{name:1},
     ]
+
+    const {customPrompt} = useCustomPrompt()
 
       
     const FAST_DURATION = 5
@@ -76,8 +79,8 @@ const SaasLanding = ({viewMode}:SaasLandingProp) => {
                 <SecondNavbar viewMode={"monitor"} />
                 <div className="p-6">
                 <div className="flex flex-col space-y-4 max-w-4xl mb-[14.5rem] mx-auto mt-[4.3rem]">
-                        <h1 className="text-5xl font-bold text-center tracking-tight">Foundation for your next saas platform</h1>
-                        <p className="text-slate-800 text-center pb-[1.1rem]">"Building and customizing your own saas platform with ease."</p>
+                        <h1 className="text-5xl font-bold text-center tracking-tight">{ customPrompt || "Foundation for your next saas platform"}</h1>
+                        <p className="text-slate-800 text-center pb-[1.1rem]">"Building and customizing your own Ecommerce platform with ease."</p>
                             <div className="flex justify-center gap-x-4">
                                 <Button>Button</Button>
                                 <Button variant={"outline"} className="border-slate-300">Button</Button>
@@ -202,4 +205,4 @@ const SaasLanding = ({viewMode}:SaasLandingProp) => {
     )
 }
 }
-export default SaasLanding
+export default GeneralLanding

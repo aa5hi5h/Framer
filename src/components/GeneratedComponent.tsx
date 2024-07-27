@@ -66,6 +66,7 @@ import TwitterNotification from "@/(packages)/custom/Twiter/(pages)/Notification
 import TwitterProfile from "@/(packages)/custom/Twiter/(pages)/Profile"
 import TwitterSignUp from "@/(packages)/custom/Twiter/(pages)/SignUp"
 import TwitterSignIn from "@/(packages)/custom/Twiter/(pages)/SingIn"
+import GeneralLanding from "@/(packages)/utilis/GeneralLanding"
 
 interface GeneratedComponentProp{
     aiResponse: string,
@@ -73,6 +74,8 @@ interface GeneratedComponentProp{
     currentPage: string,
     componentPageConfig: Array<{ name: string } | string>;
 }
+
+
 const GeneratedComponents = ({aiResponse,viewMode,currentPage,componentPageConfig = []}:GeneratedComponentProp) => {
 
     console.log("viewmode in the generated component",viewMode)
@@ -164,6 +167,17 @@ const GeneratedComponents = ({aiResponse,viewMode,currentPage,componentPageConfi
                 return <TwitterNotification viewMode={viewMode} />
             case 'profile':
                 return <TwitterProfile viewMode={viewMode} />
+        }
+    }
+
+    const RenderGeneralComponent = () => {
+        switch(currentPage.toLowerCase()){
+            case "landing": 
+                return <GeneralLanding viewMode={viewMode} />
+            case 'signin':
+                return <SaasSignIn viewMode={viewMode} />
+            case 'signup':
+                return <SaasSignUp viewMode={viewMode} />
         }
     }
     const RenderDynamicComponents = () => {
@@ -293,7 +307,7 @@ const GeneratedComponents = ({aiResponse,viewMode,currentPage,componentPageConfi
                     </>
                 )
             default : 
-            return <div>{aiResponse}</div>
+            return <div>{RenderGeneralComponent()}</div>
         }
     }
 }

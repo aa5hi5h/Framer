@@ -106,17 +106,17 @@ const SidePannelCard = ({selectedIcon,clearSelection}:SidePannelCard) => {
     return (
         <div className="flex w-full flex-col space-y-4">
             <Input
-          className="bg-slate-100 flex gap-x-4 border-[1px] focus:outline-none focus:bg-white focus:border-slate-500 focus-visible:ring-0 focus-visible:ring-offset-0"
+          className="bg-slate-100  flex gap-x-4 border-[1px] focus:outline-none focus:bg-white focus:border-slate-500 focus-visible:ring-0 focus-visible:ring-offset-0"
           placeholder="Type here to search..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
             <div className="flex gap-x-4">
-                <div onClick={HandleAddPage} className="w-[45%] h-[10vh] pt-[4px] cursor-pointer flex flex-col items-center justify-center rounded-md bg-slate-100">
+                <div onClick={HandleAddPage} className="w-[45%] h-[10vh] pt-[4px] cursor-pointer flex flex-col items-center justify-center rounded-md hover:bg-purple-100 bg-slate-100">
                     <FolderPlus className="text-slate-500" />
                     <h5 className="text-[12px] font-semibold mt-[1px]">Create</h5>
                 </div>
-                <div onClick={ToggleRenderPages} className="w-[45%] h-[10vh] pt-[4px] cursor-pointer flex flex-col items-center justify-center rounded-md bg-slate-100">
+                <div onClick={ToggleRenderPages} className="w-[45%] h-[10vh] pt-[4px] cursor-pointer  flex flex-col items-center justify-center rounded-md hover:bg-purple-100 bg-slate-100">
                     <FileDown className="text-slate-500" />
                     <h5 className="text-[12px] font-semibold mt-[1px]">Pages</h5>
                 </div>
@@ -124,13 +124,13 @@ const SidePannelCard = ({selectedIcon,clearSelection}:SidePannelCard) => {
             <div className="flex flex-col w-full">
                 <h3 className="text-sm pt-[0.5rem] text-muted-foreground font-medium">Feature Section</h3>
                 <div className=" flex w-full">
-                    <span onClick={() => setSelectedComponents("Footer")} className="w-full mt-[8px] flex justify-between px-2 py-1  rounded-md border-[1px] border-slate-300 items-center">
+                    <span onClick={() => setSelectedComponents("Footer")} className="w-full mt-[8px] flex justify-between px-2 py-1  rounded-md border-[1px] border-slate-300 hover:bg-purple-100 items-center">
                         <h3 className="text-[1rem]  w-full font-medium">Footer</h3>
                         <Plus />
                     </span>
                 </div>
                 <div className=" flex w-full">
-                    <span onClick={() => setSelectedComponents("Navbar")} className="w-full mt-[8px] flex justify-between px-2 py-1  rounded-md border-[1px] border-slate-300 items-center">
+                    <span onClick={() => setSelectedComponents("Navbar")} className="w-full mt-[8px] flex justify-between px-2 py-1  rounded-md border-[1px] border-slate-300 hover:bg-slate-100 items-center">
                         <h3 className="text-[1rem]  w-full font-medium">Navbar</h3>
                         <Plus />
                     </span>
@@ -140,7 +140,7 @@ const SidePannelCard = ({selectedIcon,clearSelection}:SidePannelCard) => {
                 <h3 className="text-sm pt-[4px] text-muted-foreground font-medium">All Section</h3>
                 <div className=" flex flex-col w-full">
                 {filteredComponentsList.map((item) => (
-              <span key={item.id} onClick={() => setSelectedComponents(item.name)} className="w-full mt-[8px] flex justify-between px-2 py-1  rounded-md border-[1px] border-slate-300 items-center">
+              <span key={item.id} onClick={() => setSelectedComponents(item.name)} className="w-full mt-[8px] flex justify-between px-2 py-1  rounded-md border-[1px] border-slate-300 hover:bg-purple-100 transition-all items-center">
                 <h3 className="text-[1rem]  w-full font-medium">{item.name}</h3>
                 <Plus />
               </span>
@@ -156,7 +156,7 @@ if(selectedComponents){
         <div className="flex w-full flex-col space-y-2">
         <div className="flex items-center gap-x-4 justify-between">
         <div className="flex items-center gap-x-1">
-        <ChevronLeft onClick={() => setSelectedComponents(null)} className="h-6 w-6 p-1 rounded-md cursor-pointer hover:bg-slate-100 " />
+        <ChevronLeft onClick={() => setSelectedComponents(null)} className="h-6 w-6 p-1 rounded-md cursor-pointer hover:bg-purple-100 " />
         <h3 className="text-[14px] font-medium">{selectedComponents} Section</h3>
         </div>
         <X onClick={clearSelection} className="h-6 w-6 p-1 rounded-md cursor-pointer hover:bg-slate-100 "/>

@@ -23,8 +23,6 @@ const WireMapView = ({viewMode}:WireMapViewProp) => {
     const { currentPage } = usePageSelection();
     const { ComponentpageConfig } = useComponentPageConfig();
 
-    console.log(aiResponse)
-    console.log(`Current view mode: ${viewMode}`);
 
     const currentPageConfig = ComponentpageConfig.find((page: PageConfig) => page.name === currentPage) || { components: [] };
 

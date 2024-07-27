@@ -43,12 +43,6 @@ const Page = () => {
     const { aiResponse } = useAiResponse();
     const { blankPageConfig, addBlankPage: addBlank,removeBlankPage } = useBlankPageConfig();
 
-    console.log("current Pagre......................",currentPage)
-    console.log("pageConfig........",pageConfig)
-    console.log("Garima....",pageConfig[currentPage])
-    console.log("AIresposne.........",aiResponse)
-
-
     const canvasRef = useRef<HTMLDivElement>(null)
     
     const handleExport = async () => {
@@ -88,7 +82,7 @@ const Page = () => {
     }
 
     useEffect(() => {
-        if (aiResponse.toLowerCase() === 'ecommerce' || "lms" || "blog" || 'rental' || 'social' || 'saas') {
+        if (aiResponse.toLowerCase() === 'ecommerce' || "lms" || "blog" || 'rental' || 'social' || 'saas' || 'other') {
             setCurrentPage('landing');
         }
     }, [aiResponse, setCurrentPage]);
@@ -99,8 +93,6 @@ const Page = () => {
         switch (viewMode) {
             case 'mobile':
               return 'max-w-sm mx-auto';
-            case 'tablet':
-              return 'max-w-xl mx-auto';
             case 'monitor':
               return 'max-w-full';
             default:
@@ -219,11 +211,11 @@ if(exportMode === true){
               <TransformComponent>
                 <div className="w-[200vh] h-[250vh] my-[4rem] mx-[8rem] flex justify-center items-start" style={{ display: 'flex', flexDirection: 'row', gap: '10px' }}>
                   {pageConfig[aiResponse]?.map((item: itemComponentProp) => (
-                    <div onClick={() => handlePageChange(item.name)} key={item.id} className="flex hover:bg-green-100 cursor-pointer rounded-md flex-col items-center p-2">
+                    <div onClick={() => handlePageChange(item.name)} key={item.id} className="flex hover:bg-purple-100 cursor-pointer rounded-md flex-col items-center p-2">
                       <Image src={viewMode === "mobile" ? item.mobileExportImg : item.exportImg}
                         alt={item.name}
-                        width={200}
-                        height={200}
+                        width={400}
+                        height={400}
                         className={`h-15 w-35 object-cover items-start`} />
                       <h3 className="text-[10px] text-center pt-[4px] text-muted-foreground font-medium">{item.name}</h3>
                     </div>
